@@ -35,14 +35,20 @@ SOURCE = camera.c \
 		 check.c \
 		 check_utils.c \
 		 cylinder.c \
+		 cylinder_base.c \
+		 cylinder_surface.c \
+		 diffuse.c \
 		 error.c \
 		 free.c \
+		 hit.c \
 		 hook.c \
 		 init.c \
 		 light.c \
 		 main.c \
 		 object.c \
+		 phong_lighting.c \
 		 plane.c \
+		 ray.c \
 		 read.c \
 		 redef_libf.c \
 		 redef_libf_utils.c \
@@ -52,7 +58,13 @@ SOURCE = camera.c \
 		 set_object_1.c \
 		 set_object_2.c \
 		 set_utils.c \
+		 specular.c \
 		 sphere.c \
+		 vector.c \
+		 vector_add_min.c \
+		 vector_mag_norm.c \
+		 vector_product.c \
+
 
 SRCS = $(addprefix $(SRCDIR), $(SOURCE))
 

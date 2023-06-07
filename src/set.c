@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:42:59 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 17:24:15 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 19:37:09 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ void	set_ambient(char **tokens, t_vars *vars)
 
 void	set_camera(char **tokens, t_vars *vars)
 {
-	t_camera	*camera;
+	t_point3	look_from;
+	t_vec3		look_at;
+	double		h_fov;
 
-	camera = &vars->scene->camera;
-	if (camera->h_fov != INITIAL_VALUE)
+	if (vars->scene->camera.h_fov != INITIAL_VALUE)
 		print_read_error("duplicated camera element", NULL, vars, tokens);
 	if (check_element_count(tokens, 4) == FALSE)
 		print_read_error("wrong camera element count", NULL, vars, tokens);
@@ -46,12 +47,13 @@ void	set_camera(char **tokens, t_vars *vars)
 		print_read_error("wrong element values", tokens[2], vars, tokens);
 	if (check_element_value(tokens[3], P_FOV, D_FLOAT) == FALSE)
 		print_read_error("wrong element values", tokens[3], vars, tokens);
-	if (set_vars_csv(tokens[1], &camera->origin, S_POINT, D_FLOAT) == FALSE)
+	if (set_vars_csv(tokens[1], &look_from, S_POINT, D_FLOAT) == FALSE)
 		print_read_error("cannot set element values", tokens[1], vars, tokens);
-	if (set_vars_csv(tokens[2], &camera->look_at, S_VEC, D_FLOAT) == FALSE)
+	if (set_vars_csv(tokens[2], &look_at, S_VEC, D_FLOAT) == FALSE)
 		print_read_error("cannot set element values", tokens[2], vars, tokens);
-	if (set_vars_value(tokens[3], &camera->h_fov, D_FLOAT) == FALSE)
+	if (set_vars_value(tokens[3], &h_fov, D_FLOAT) == FALSE)
 		print_read_error("cannot set element values", tokens[3], vars, tokens);
+	vars->scene->camera = camera_(vars->scene->canvas, look_from, look_at, h_fov);
 }
 
 void	set_light(char **tokens, t_vars *vars)

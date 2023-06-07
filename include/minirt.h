@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 20:10:26 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 17:19:48 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 19:54:45 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,23 @@ void		*rt_mlx_init(t_vars *vars);
 void		*rt_mlx_new_image(t_vars *vars, int width, int height);
 void		*rt_mlx_new_window(t_vars *vars, int sx, int sy, char *title);
 void		rt_mlx_pixel_put(t_mlx_data *img, int x, int y, t_color3 color);
+
+t_hit		hit_(double t_max);
+t_bool	hit_objects(t_object *objects, t_ray *ray, t_hit *hit);
+t_color3	phong_lighting(t_scene *scene);
+t_ray	ray_(t_point3 origin, t_vec3 dir);
+t_ray	primary_ray(t_camera *cam, t_vec2 pixel_pos);
+t_color3	trace_ray(t_scene *scene);
+t_color3	get_diffuse(t_vec3 normal, t_vec3 light_dir, t_color3 color);
+t_color3	get_specular(t_scene *scene, t_vec3 light_dir, t_color3 color);
+t_vec3	ray_at(double t, t_ray *ray);
+
+t_bool	intersect_cylinder_base(t_object *object, t_ray *ray, t_hit *hit, \
+enum e_component type);
+t_bool	intersect_cylinder_surface(t_object *object, t_ray *ray, t_hit *hit);
+t_bool	intersect_ray_cylinder(t_object *object, t_ray *ray, t_hit *hit);
+t_bool	intersect_ray_sphere(t_object *object, t_ray *ray, t_hit *hit);
+t_bool	intersect_ray_plane(t_object *object, t_ray *ray, t_hit *hit);
+t_vec3	elem_prod(t_vec3 u, t_vec3 v);
 
 #endif
