@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:52:05 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/06 20:33:59 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 17:12:24 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ t_camera	camera_(t_canvas canvas, t_point3 from, t_vec3 at, double h_fov)
 	camera.h_fov = h_fov;
 	camera.viewport_w = 2.0 * _get_width(camera.h_fov);
 	camera.viewport_h = camera.viewport_w / canvas.aspect_ratio;
-	camera.look_from = from;
+	camera.origin = from;
 	camera.look_at = at;
 	jup = vec3_(0, 1, 0);
-	k = norm(sub(camera.look_from, camera.look_at));
+	k = norm(sub(camera.origin, camera.look_at));
 	i = norm(cross(jup, k));
 	j = cross(k, i);
 	camera.ai = scl_mul(camera.viewport_w, i);
 	camera.bj = scl_mul(camera.viewport_h, j);
-	camera.lower_left_corner = sub(sub(sub(camera.look_from, \
+	camera.lower_left_corner = sub(sub(sub(camera.origin, \
 		scl_mul(0.5, camera.ai)), scl_mul(0.5, camera.bj)), k);
 	return (camera);
 }

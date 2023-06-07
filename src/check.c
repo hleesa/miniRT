@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 21:17:18 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/06 20:50:04 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 17:13:14 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@ t_bool	check_element_attr(char *elem, int type_p)
 	int		error;
 
 	error = FALSE;
-	if (type_p == COORD || type_p == DIMEN)
+	if (type_p == P_COORD || type_p == P_DIMEN)
 		if (INT_MAX < rt_atof(elem, &error) || \
 			rt_atof(elem, &error) < INT_MIN || error == TRUE)
 			return (FALSE);
-	if (type_p == FOV)
+	if (type_p == P_FOV)
 		if (180 < rt_atof(elem, &error) || \
 			rt_atof(elem, &error) < 0 || error == TRUE)
 			return (FALSE);
-	if (type_p == LIGHT)
+	if (type_p == P_LIGHT)
 		if (1.0 < rt_atof(elem, &error) || \
 			rt_atof(elem, &error) < 0.0 || error == TRUE)
 			return (FALSE);
-	if (type_p == NORM)
+	if (type_p == P_NORM)
 		if (1.0 < rt_atof(elem, &error) || \
 			rt_atof(elem, &error) < -1.0 || error == TRUE)
 			return (FALSE);
-	if (type_p == RGB)
+	if (type_p == P_RGB)
 		if (255 < ft_atoi(elem) || ft_atoi(elem) < 0)
 			return (FALSE);
 	return (TRUE);
@@ -63,10 +63,10 @@ t_bool	check_element_csv(char *csv, int type_p, int type_d)
 		ret_val = TRUE;
 		while (token_count--)
 		{
-			if (type_d == INT)
+			if (type_d == D_INT)
 				if (is_int_fmt(csv_tokens[token_count]) == FALSE)
 					ret_val = FALSE;
-			if (type_d == FLOAT)
+			if (type_d == D_FLOAT)
 				if (is_float_fmt(csv_tokens[token_count]) == FALSE)
 					ret_val = FALSE;
 			if (check_element_attr(csv_tokens[token_count], type_p) == FALSE)
@@ -79,10 +79,10 @@ t_bool	check_element_csv(char *csv, int type_p, int type_d)
 
 t_bool	check_element_value(char *elem, int type_p, int type_d)
 {
-	if (type_d == INT)
+	if (type_d == D_INT)
 		if (is_int_fmt(elem) == FALSE)
 			return (FALSE);
-	if (type_d == FLOAT)
+	if (type_d == D_FLOAT)
 		if (is_float_fmt(elem) == FALSE)
 			return (FALSE);
 	if (check_element_attr(elem, type_p) == FALSE)

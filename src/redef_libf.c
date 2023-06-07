@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:58:16 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/05 22:32:57 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 17:18:59 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,29 +36,29 @@ double	rt_atof(const char *str, int *error)
 	return (ret);
 }
 
-void	rt_close(int fd, t_data *data)
+void	rt_close(int fd, t_vars *vars)
 {
 	if (close(fd) < 0)
-		print_error("close ", data);
+		print_error("close ", vars);
 	return ;
 }
 
-int	rt_open(char *file, int flag, t_data *data)
+int	rt_open(char *file, int flag, t_vars *vars)
 {
 	int	fd;
 
 	fd = open(file, flag);
 	if (fd < 0)
-		print_error("open ", data);
+		print_error("open ", vars);
 	return (fd);
 }
 
-void	*rt_malloc(size_t size, t_data *data)
+void	*rt_malloc(size_t size, t_vars *vars)
 {
 	void	*ret;
 
 	ret = malloc(size);
 	if (ret == NULL)
-		print_error("malloc ", data);
+		print_error("malloc ", vars);
 	return (ret);
 }

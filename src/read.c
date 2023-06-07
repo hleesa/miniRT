@@ -6,13 +6,13 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 20:58:51 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/06 17:59:11 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 17:18:45 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static char	**_tokenize(t_data *data, char *line)
+static char	**_tokenize(t_vars *vars, char *line)
 {
 	char	**tokens;
 	char	**new_tokens;
@@ -21,7 +21,7 @@ static char	**_tokenize(t_data *data, char *line)
 
 	tokens = ft_split(line, ' ');
 	count = count_tokens(tokens);
-	new_tokens = rt_malloc(sizeof(char *) * (count + 1), data);
+	new_tokens = rt_malloc(sizeof(char *) * (count + 1), vars);
 	new_tokens[count] = NULL;
 	count = 0;
 	while (tokens[count])
@@ -39,23 +39,23 @@ static char	**_tokenize(t_data *data, char *line)
 	return (new_tokens);
 }
 
-void	read_file(t_data *data, char *file)
+void	read_file(t_vars *vars, char *file)
 {
 	int		fd;
 	char	*read_line;
 	char	**tokens;
 
-	fd = rt_open(file, O_RDONLY, data);
+	fd = rt_open(file, O_RDONLY, vars);
 	while (TRUE)
 	{
 		tokens = NULL;
 		read_line = get_next_line(fd);
 		if (read_line == NULL)
 			break ;
-		tokens = _tokenize(data, read_line);
+		tokens = _tokenize(vars, read_line);
 		free(read_line);
-		set_data(tokens, data);
+		set_vars(tokens, vars);
 		free_tokens(tokens);
 	}
-	rt_close(fd, data);
+	rt_close(fd, vars);
 }

@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 19:52:11 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 16:00:13 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 17:23:42 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ void	print_scene(t_scene *scene)
 	printf("----------\n");
 	camera = scene->camera;
 	printf("Camera\n");
-	printf("coordinate: %f, %f, %f\n", camera.look_from.x, camera.look_from.y, camera.look_from.z);
+	printf("coordinate: %f, %f, %f\n", camera.origin.x, camera.origin.y, camera.origin.z);
 	printf("normal: %f, %f, %f\n", camera.look_at.x, camera.look_at.y, camera.look_at.z);
 	printf("fov: %f\n", camera.h_fov);
 	printf("----------\n");
-	light = scene->lights->element;
+	light = scene->light->element;
 	printf("Light\n");
 	printf("coordinate: %f, %f, %f\n", light->origin.x, light->origin.y, light->origin.z);
 	printf("bright ratio: %f\n", light->bright_ratio);
-	printf("color: %f, %f, %f\n", scene->lights->albedo.r, scene->lights->albedo.g, scene->lights->albedo.b);
+	printf("color: %f, %f, %f\n", scene->light->albedo.r, scene->light->albedo.g, scene->light->albedo.b);
 	printf("----------\n");
 	objects = scene->objects;
 	while (objects)
@@ -75,13 +75,13 @@ void	print_scene(t_scene *scene)
 	printf("\n----------\n");
 }
 
-void	render(t_data *data)
+void	render(t_vars *vars)
 {
 	t_scene	*scene;
 	int		i;
 	int		j;
 
-	scene = data->scene;
+	scene = vars->scene;
 	print_scene(scene);
 	j = scene->canvas.height - 1;
 	while (j >= 0)
@@ -91,12 +91,12 @@ void	render(t_data *data)
 		i = 0;
 		while (i < scene->canvas.width)
 		{
-			rt_mlx_pixel_put(&data->img, i, j, color3_(0.5, 0.3, 0.4));
+			rt_mlx_pixel_put(&vars->img, i, j, color3_(0.5, 0.3, 0.4));
 			i++;
 		}
 		j--;
 		printf("\033[1A\n");
 	}
 	printf("\n");
-	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
 }

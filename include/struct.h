@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 23:02:38 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 15:53:03 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 16:47:48 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ struct s_camera
 	double		h_fov;
 	double		viewport_w;
 	double		viewport_h;
-	t_point3	look_from;
+	t_point3	origin;
 	t_vec3		look_at;
 	t_point3	lower_left_corner;
 	t_vec3		ai;
@@ -38,6 +38,13 @@ struct s_canvas
 	int		width;
 	int		height;
 	double	aspect_ratio;
+};
+
+struct s_coefficient
+{
+	double	a;
+	double	b;
+	double	c;
 };
 
 struct s_cylinder
@@ -60,20 +67,20 @@ struct s_hit
 	t_color3	albedo;
 };
 
-struct s_img
+struct s_mlx_data
 {
 	void	*img;
 	char	*addr;
-	int		bpp;
-	int		line_len;
+	int		bits_per_pixel;
+	int		line_length;
 	int		endian;
 };
 
 struct s_light
 {
+	double		bright_ratio;
 	t_point3	origin;
 	t_color3	color;
-	double		bright_ratio;
 };
 
 struct s_object
@@ -81,7 +88,7 @@ struct s_object
 	void			*element;
 	void			*next;
 	t_color3		albedo;
-	t_obj_type		type;
+	t_object_type	type;
 };
 
 struct s_plane
@@ -103,7 +110,7 @@ struct s_scene
 	t_ray		ray;
 	t_hit		hit;
 	t_ambient	ambient;
-	t_object	*lights;
+	t_object	*light;
 	t_object	*objects;
 };
 
@@ -114,11 +121,11 @@ struct s_sphere
 	t_point3	center;
 };
 
-struct s_data
+struct s_vars
 {
 	void		*mlx;
 	void		*win;
-	t_img		img;
+	t_mlx_data	img;
 	t_scene		*scene;
 };
 

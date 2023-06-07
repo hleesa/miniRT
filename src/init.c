@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 22:25:39 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 15:58:48 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 17:20:04 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_canvas	_init_canvas(int height)
 	return (canvas);
 }
 
-static t_light	*_init_light(t_data *data)
+static t_light	*_init_light(t_vars *vars)
 {
 	t_light		*light;
 	t_point3	origin;
@@ -41,42 +41,42 @@ static t_light	*_init_light(t_data *data)
 	origin = point3_(0, 0, 0);
 	color = color3_(1, 1, 1);
 	bright_ratio = INITIAL_VALUE;
-	light = light_(origin, color, bright_ratio, data);
+	light = light_(origin, color, bright_ratio, vars);
 	return (light);
 }
 
-static t_scene	*_init_scene(t_data *data)
+static t_scene	*_init_scene(t_vars *vars)
 {
 	t_scene	*scene;
 
-	scene = rt_malloc(sizeof(t_scene), data);
-	scene->canvas = _init_canvas(HEIGHT);
+	scene = rt_malloc(sizeof(t_scene), vars);
+	scene->canvas = _init_canvas(Y_END);
 	scene->camera = \
 		camera_(scene->canvas, point3_(0, 0, 0), vec3_(0, 0, 1), INITIAL_VALUE);
 	scene->ambient = _init_ambient();
-	scene->lights = \
-		object_(LIGHT_POINT, _init_light(data), color3_(1, 1, 1), data);
+	scene->light = \
+		object_(LIGHT_POINT, _init_light(vars), color3_(1, 1, 1), vars);
 	scene->objects = NULL;
 	return (scene);
 }
 
-t_data	*init_data(void)
+t_vars	*init_vars(void)
 {
-	t_data	*data;
+	t_vars	*vars;
 	int		width;
 	int		height;
 
-	data = rt_malloc(sizeof(t_data), NULL);
-	data->scene = _init_scene(data);
-	width = data->scene->canvas.width;
-	height = data->scene->canvas.height;
-	data->mlx = NULL;
-	data->win = NULL;
-	data->img.img = NULL;
-	data->img.addr = NULL;
-	data->mlx = rt_mlx_init(data);
-	data->win = rt_mlx_new_window(data, width, height, "miniRT");
-	data->img.img = rt_mlx_new_image(data, width, height);
-	data->img.addr = rt_mlx_get_data_addr(data);
-	return (data);
+	vars = rt_malloc(sizeof(t_vars), NULL);
+	vars->scene = _init_scene(vars);
+	width = vars->scene->canvas.width;
+	height = vars->scene->canvas.height;
+	vars->mlx = NULL;
+	vars->win = NULL;
+	vars->img.img = NULL;
+	vars->img.addr = NULL;
+	vars->mlx = rt_mlx_init(vars);
+	vars->win = rt_mlx_new_window(vars, width, height, "miniRT");
+	vars->img.img = rt_mlx_new_image(vars, width, height);
+	vars->img.addr = rt_mlx_get_data_addr(vars);
+	return (vars);
 }

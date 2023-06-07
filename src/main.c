@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 18:40:29 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/03 23:25:17 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 17:17:53 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ static int	_print_usage(void)
 
 int	main(int argc, char **argv)
 {
-	t_data	*data;
+	t_vars	*vars;
 
 	if (argc != 2 || check_file_ext(argv[1]) == FALSE)
 		return (_print_usage());
-	data = init_data();
-	read_file(data, argv[1]);
-	render(data);
-	mlx_key_hook(data->win, key_hook, data);
-	mlx_hook(data->win, RED_CROSS, 0, exit_hook, data);
-	mlx_loop(data->mlx);
+	vars = init_vars();
+	read_file(vars, argv[1]);
+	render(vars);
+	mlx_key_hook(vars->win, key_hook, vars);
+	mlx_hook(vars->win, RED_CROSS, 0, exit_hook, vars);
+	mlx_loop(vars->mlx);
 	return (0);
 }

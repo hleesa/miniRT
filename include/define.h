@@ -6,18 +6,17 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 21:29:50 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/06 16:34:00 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 17:07:39 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINE_H
 # define DEFINE_H
 
-# define ESC 53
 # define RED_CROSS 17
 
-# define WIDTH 800
-# define HEIGHT 600
+# define X_END 800
+# define Y_END 600
 
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
@@ -27,26 +26,18 @@
 
 # define INITIAL_VALUE -42
 
-# define TRUE 1
-# define FALSE 0
+# define D_FLOAT 0
+# define D_INT 1
 
-# define FLOAT 0
-# define INT 1
+# define S_COLOR 01
+# define S_POINT 10
+# define S_VEC 11
 
-# define COLOR 01
-# define POINT 10
-# define VEC 11
-
-# define COORD 001
-# define DIMEN 010
-# define FOV 011
-# define LIGHT 100
-# define NORM 101
-# define RGB 110
-
-# define LIGHT_POINT 000
-# define CYLINDER 001
-# define PLANE 010
-# define SPHERE 011
+# define P_COORD 001
+# define P_DIMEN 010
+# define P_FOV 011
+# define P_LIGHT 100
+# define P_NORM 101
+# define P_RGB 110
 
 #endif
