@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:42:59 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 19:37:09 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 21:05:29 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	set_ambient(char **tokens, t_vars *vars)
 {
-	t_ambient	*ambient;
+	double		lighting_ratio;
+	t_color3	color;
 
-	ambient = &vars->scene->ambient;
-	if (ambient->lighting_ratio != INITIAL_VALUE)
+	if (vars->scene->ambient.lighting_ratio != INITIAL_VALUE)
 		print_read_error("duplicated ambient element", NULL, vars, tokens);
 	if (check_element_count(tokens, 3) == FALSE)
 		print_read_error("wrong ambient element count", NULL, vars, tokens);
@@ -25,10 +25,12 @@ void	set_ambient(char **tokens, t_vars *vars)
 		print_read_error("wrong element values", tokens[1], vars, tokens);
 	if (check_element_csv(tokens[2], P_RGB, D_INT) == FALSE)
 		print_read_error("wrong element values", tokens[2], vars, tokens);
-	if (set_vars_value(tokens[1], &ambient->lighting_ratio, D_FLOAT) == FALSE)
+	if (set_vars_value(tokens[1], &lighting_ratio, D_FLOAT) == FALSE)
 		print_read_error("cannot set element values", tokens[1], vars, tokens);
-	if (set_vars_csv(tokens[2], &ambient->color, S_COLOR, D_FLOAT) == FALSE)
+	if (set_vars_csv(tokens[2], &color, S_COLOR, D_FLOAT) == FALSE)
 		print_read_error("cannot set element values", tokens[2], vars, tokens);
+	vars->scene->ambient.lighting_ratio = lighting_ratio;
+	vars->scene->ambient.color = scl_mul(lighting_ratio, color);
 }
 
 void	set_camera(char **tokens, t_vars *vars)
@@ -58,7 +60,9 @@ void	set_camera(char **tokens, t_vars *vars)
 
 void	set_light(char **tokens, t_vars *vars)
 {
-	t_light	*light;
+	t_light		*light;
+	t_point3	origin;
+	double		bright_ratio;
 
 	light = (t_light *)vars->scene->light->element;
 	if (light->bright_ratio != INITIAL_VALUE)
@@ -71,10 +75,13 @@ void	set_light(char **tokens, t_vars *vars)
 		print_read_error("wrong element values", tokens[2], vars, tokens);
 	if (check_element_csv(tokens[3], P_RGB, D_INT) == FALSE)
 		print_read_error("wrong element values", tokens[3], vars, tokens);
-	if (set_vars_csv(tokens[1], &light->origin, S_POINT, D_FLOAT) == FALSE)
+	if (set_vars_csv(tokens[1], &origin, S_POINT, D_FLOAT) == FALSE)
 		print_read_error("cannot set element values", tokens[1], vars, tokens);
-	if (set_vars_value(tokens[2], &light->bright_ratio, D_FLOAT) == FALSE)
+	if (set_vars_value(tokens[2], &bright_ratio, D_FLOAT) == FALSE)
 		print_read_error("cannot set element values", tokens[2], vars, tokens);
+	light->origin = origin;
+	light->bright_ratio = bright_ratio;
+	light->color = scl_mul(bright_ratio, light->color);
 }
 
 void	set_vars(char **tokens, t_vars *vars)

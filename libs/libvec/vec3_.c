@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:23:48 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/05 22:12:56 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 20:51:23 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ t_vec3	vec3_(double ai, double bj, double ck)
 {
 	t_vec3	vec;
 
-	vec.x = ai;
-	vec.y = bj;
-	vec.z = ck;
+	vec.ai = ai;
+	vec.bj = bj;
+	vec.ck = ck;
 	return (vec);
 }
