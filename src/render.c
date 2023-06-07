@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 19:52:11 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/06 21:04:29 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 14:51:56 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_scene(t_scene scene)
 	printf("\n----------\n");
 	printf("Ambient\n");
 	printf("lighting ratio: %f\n", ambient.lighting_ratio);
-	printf("color: %f, %f, %f\n", ambient.color.x, ambient.color.y, ambient.color.z);
+	printf("color: %f, %f, %f\n", ambient.color.r, ambient.color.g, ambient.color.b);
 	printf("----------\n");
 	camera = scene.camera;
 	printf("Camera\n");
@@ -39,7 +39,7 @@ void	print_scene(t_scene scene)
 	printf("Light\n");
 	printf("coordinate: %f, %f, %f\n", light->origin.x, light->origin.y, light->origin.z);
 	printf("bright ratio: %f\n", light->bright_ratio);
-	printf("color: %f, %f, %f\n", scene.lights->albedo.x, scene.lights->albedo.y, scene.lights->albedo.z);
+	printf("color: %f, %f, %f\n", scene.lights->albedo.r, scene.lights->albedo.g, scene.lights->albedo.b);
 	printf("----------\n");
 	objects = scene.objects;
 	while (objects)
@@ -52,7 +52,7 @@ void	print_scene(t_scene scene)
 			printf("\tnormal: %f, %f, %f\n", cylinder->normal.x, cylinder->normal.y, cylinder->normal.z);
 			printf("\tdiameter: %f\n", cylinder->radius);
 			printf("\theight: %f\n", cylinder->height);
-			printf("\tcolor: %f, %f, %f\n", objects->albedo.x, objects->albedo.y, objects->albedo.z);
+			printf("\tcolor: %f, %f, %f\n", objects->albedo.r, objects->albedo.g, objects->albedo.b);
 		}
 		if (objects->type == PLANE)
 		{
@@ -60,7 +60,7 @@ void	print_scene(t_scene scene)
 			printf("Plane\n");
 			printf("\tcoordinate: %f, %f, %f\n", plane->point.x, plane->point.y, plane->point.z);
 			printf("\tnormal: %f, %f, %f\n", plane->normal.x, plane->normal.y, plane->normal.z);
-			printf("\tcolor: %f, %f, %f\n", objects->albedo.x, objects->albedo.y, objects->albedo.z);
+			printf("\tcolor: %f, %f, %f\n", objects->albedo.r, objects->albedo.g, objects->albedo.b);
 		}
 		if (objects->type == SPHERE)
 		{
@@ -68,7 +68,7 @@ void	print_scene(t_scene scene)
 			printf("Sphere\n");
 			printf("\tcoordinate: %f, %f, %f\n", sphere->center.x, sphere->center.y, sphere->center.z);
 			printf("\tradius: %f\n", sphere->radius);
-			printf("\tcolor: %f, %f, %f\n", objects->albedo.x, objects->albedo.y, objects->albedo.z);
+			printf("\tcolor: %f, %f, %f\n", objects->albedo.r, objects->albedo.g, objects->albedo.b);
 		}
 		objects = objects->next;
 	}

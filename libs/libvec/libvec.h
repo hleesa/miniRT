@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 20:33:54 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/05 22:08:58 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 14:46:31 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,37 @@ typedef struct s_vec2
 	double	y;
 }	t_vec2;
 
-typedef struct s_vec3	t_vec3;
-typedef struct s_vec3	t_point3;
-typedef struct s_vec3	t_color3;
-
-struct s_vec3
+typedef struct s_vector3
 {
-	double	x;
-	double	y;
-	double	z;
-};
+	union
+	{
+		struct
+		{
+			double	ai;
+			double	bj;
+			double	ck;
+		};
+		struct
+		{
+			double	x;
+			double	y;
+			double	z;
+		};
+		struct
+		{
+			double	r;
+			double	g;
+			double	b;
+		};
+		struct
+		{
+			double	arr[3];
+		};
+	};
+}	t_vec3;
+
+typedef t_vec3	t_color3;
+typedef t_vec3	t_point3;
 
 t_vec3		add(t_vec3 u, t_vec3 v);
 t_color3	color3_(double r, double g, double b);
