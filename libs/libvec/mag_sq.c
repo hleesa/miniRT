@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:36:40 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/05 22:11:43 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 20:49:21 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 double	mag_sq(t_vec3 v)
 {
-	return (v.x * v.x + v.y * v.y + v.z * v.z);
+	return (v.ai * v.ai + v.bj * v.bj + v.ck * v.ck);
 }
