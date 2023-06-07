@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 19:52:11 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 17:23:42 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 20:03:00 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	render(t_vars *vars)
 		while (i < scene->canvas.width)
 		{
 			pixel_pos.x = (double) i / (scene->canvas.width - 1);
-			pixel_pos.y = (double) j / (scene->canvas.height - 1);
+			pixel_pos.y = 1 - ((double) j / (scene->canvas.height - 1));
 			scene->ray = primary_ray(&scene->camera, pixel_pos);
 //			color = create_trgb(trace_ray(scene));
 			rt_mlx_pixel_put(&vars->img, i, j, trace_ray(scene));

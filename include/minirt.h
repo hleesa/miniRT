@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 20:10:26 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 17:19:48 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 19:54:45 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,5 @@ t_bool	intersect_ray_cylinder(t_object *object, t_ray *ray, t_hit *hit);
 t_bool	intersect_ray_sphere(t_object *object, t_ray *ray, t_hit *hit);
 t_bool	intersect_ray_plane(t_object *object, t_ray *ray, t_hit *hit);
 t_vec3	elem_prod(t_vec3 u, t_vec3 v);
-
-
-
-
-
 
 #endif
