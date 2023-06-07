@@ -51,11 +51,9 @@ static t_scene	*_init_scene(t_vars *vars)
 
 	scene = rt_malloc(sizeof(t_scene), vars);
 	scene->canvas = _init_canvas(Y_END);
-	scene->camera = \
-		camera_(scene->canvas, point3_(0, 0, 0), vec3_(0, 0, 1), INITIAL_VALUE);
+	scene->camera = camera_(scene->canvas, point3_(0, 0, 10), vec3_(0, 0, -1), INITIAL_VALUE);
 	scene->ambient = _init_ambient();
-	scene->light = \
-		object_(LIGHT_POINT, _init_light(vars), color3_(1, 1, 1), vars);
+	scene->light = object_(LIGHT_POINT, _init_light(vars), color3_(1, 1, 1), vars);
 	scene->objects = NULL;
 	return (scene);
 }
