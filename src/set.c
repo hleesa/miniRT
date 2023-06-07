@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:42:59 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/06 21:10:29 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 16:00:37 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	set_ambient(char **tokens, t_data *data)
 {
 	t_ambient	*ambient;
 
-	ambient = &data->scene.ambient;
+	ambient = &data->scene->ambient;
 	if (ambient->lighting_ratio != INITIAL_VALUE)
 		print_read_error("duplicated ambient element", NULL, data, tokens);
 	if (check_element_count(tokens, 3) == FALSE)
@@ -35,7 +35,7 @@ void	set_camera(char **tokens, t_data *data)
 {
 	t_camera	*camera;
 
-	camera = &data->scene.camera;
+	camera = &data->scene->camera;
 	if (camera->h_fov != INITIAL_VALUE)
 		print_read_error("duplicated camera element", NULL, data, tokens);
 	if (check_element_count(tokens, 4) == FALSE)
@@ -58,7 +58,7 @@ void	set_light(char **tokens, t_data *data)
 {
 	t_light	*light;
 
-	light = (t_light *)data->scene.lights->element;
+	light = (t_light *)data->scene->lights->element;
 	if (light->bright_ratio != INITIAL_VALUE)
 		print_read_error("duplicated light element", NULL, data, tokens);
 	if (check_element_count(tokens, 4) == FALSE)

@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 23:02:38 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/06 20:27:26 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 15:53:03 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ struct s_data
 	void		*mlx;
 	void		*win;
 	t_img		img;
-	t_scene		scene;
+	t_scene		*scene;
 };
 
 #endif

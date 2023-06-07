@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 20:54:00 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/06 21:11:04 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 16:01:28 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	set_object_sphere(char **tokens, t_data *data)
 		print_read_error("wrong element values", tokens[3], data, tokens);
 	if (set_data_csv(tokens[3], &color, COLOR, FLOAT) == FALSE)
 		print_read_error("cannot set element values", tokens[3], data, tokens);
-	if (data->scene.objects == NULL)
-		data->scene.objects = object_(SPHERE, sphere, color, data);
+	if (data->scene->objects == NULL)
+		data->scene->objects = object_(SPHERE, sphere, color, data);
 	else
-		append(&data->scene.objects, object_(SPHERE, sphere, color, data));
+		append(&data->scene->objects, object_(SPHERE, sphere, color, data));
 }

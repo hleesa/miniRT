@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:03:50 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/06 20:52:51 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 15:57:24 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ static void	_free_objects(t_object *objects)
 void	free_struct(t_data *data)
 {
 	_free_mlx(data);
-	_free_objects(data->scene.lights);
-	_free_objects(data->scene.objects);
+	_free_objects(data->scene->lights);
+	_free_objects(data->scene->objects);
+	free(data->scene);
 	free(data);
 }
 

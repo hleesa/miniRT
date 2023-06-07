@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 22:25:39 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/06 21:05:18 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 15:58:48 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,6 @@ static t_canvas	_init_canvas(int height)
 	return (canvas);
 }
 
-static t_camera	_init_camera(t_canvas canvas)
-{
-	t_camera	camera;
-	t_point3	look_from;
-	t_vec3		look_at;
-
-	look_from = point3_(0, 0, 0);
-	look_at = vec3_(0, 0, 1);
-	camera = camera_(canvas, look_from, look_at, INITIAL_VALUE);
-	return (camera);
-}
-
 static t_light	*_init_light(t_data *data)
 {
 	t_light		*light;
@@ -57,6 +45,21 @@ static t_light	*_init_light(t_data *data)
 	return (light);
 }
 
+static t_scene	*_init_scene(t_data *data)
+{
+	t_scene	*scene;
+
+	scene = rt_malloc(sizeof(t_scene), data);
+	scene->canvas = _init_canvas(HEIGHT);
+	scene->camera = \
+		camera_(scene->canvas, point3_(0, 0, 0), vec3_(0, 0, 1), INITIAL_VALUE);
+	scene->ambient = _init_ambient();
+	scene->lights = \
+		object_(LIGHT_POINT, _init_light(data), color3_(1, 1, 1), data);
+	scene->objects = NULL;
+	return (scene);
+}
+
 t_data	*init_data(void)
 {
 	t_data	*data;
@@ -64,14 +67,9 @@ t_data	*init_data(void)
 	int		height;
 
 	data = rt_malloc(sizeof(t_data), NULL);
-	data->scene.canvas = _init_canvas(HEIGHT);
-	data->scene.camera = _init_camera(data->scene.canvas);
-	data->scene.ambient = _init_ambient();
-	data->scene.lights = \
-		object_(LIGHT_POINT, _init_light(data), color3_(1, 1, 1), data);
-	data->scene.objects = NULL;
-	width = data->scene.canvas.width;
-	height = data->scene.canvas.height;
+	data->scene = _init_scene(data);
+	width = data->scene->canvas.width;
+	height = data->scene->canvas.height;
 	data->mlx = NULL;
 	data->win = NULL;
 	data->img.img = NULL;

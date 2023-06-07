@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 20:53:46 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/06 21:10:57 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 16:01:12 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ void	set_object_cylinder(char **tokens, t_data *data)
 		print_read_error("wrong element values", tokens[5], data, tokens);
 	if (set_data_csv(tokens[5], &color, COLOR, FLOAT) == FALSE)
 		print_read_error("cannot set element values", tokens[5], data, tokens);
-	if (data->scene.objects == NULL)
-		data->scene.objects = object_(CYLINDER, cylinder, color, data);
+	if (data->scene->objects == NULL)
+		data->scene->objects = object_(CYLINDER, cylinder, color, data);
 	else
-		append(&data->scene.objects, object_(CYLINDER, cylinder, color, data));
+		append(&data->scene->objects, object_(CYLINDER, cylinder, color, data));
 }
 
 t_plane	*set_plane(char **tokens, t_data *data)
@@ -83,8 +83,8 @@ void	set_object_plane(char **tokens, t_data *data)
 		print_read_error("wrong element values", tokens[3], data, tokens);
 	if (set_data_csv(tokens[3], &color, COLOR, FLOAT) == FALSE)
 		print_read_error("cannot set element values", tokens[3], data, tokens);
-	if (data->scene.objects == NULL)
-		data->scene.objects = object_(PLANE, plane, color, data);
+	if (data->scene->objects == NULL)
+		data->scene->objects = object_(PLANE, plane, color, data);
 	else
-		append(&data->scene.objects, object_(PLANE, plane, color, data));
+		append(&data->scene->objects, object_(PLANE, plane, color, data));
 }

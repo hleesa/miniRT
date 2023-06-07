@@ -6,14 +6,14 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 19:52:11 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 14:51:56 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/07 16:00:13 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 // temp function
-void	print_scene(t_scene scene)
+void	print_scene(t_scene *scene)
 {
 	t_ambient	ambient;
 	t_camera	camera;
@@ -23,25 +23,25 @@ void	print_scene(t_scene scene)
 	t_plane		*plane;
 	t_sphere	*sphere;
 
-	ambient = scene.ambient;
+	ambient = scene->ambient;
 	printf("\n----------\n");
 	printf("Ambient\n");
 	printf("lighting ratio: %f\n", ambient.lighting_ratio);
 	printf("color: %f, %f, %f\n", ambient.color.r, ambient.color.g, ambient.color.b);
 	printf("----------\n");
-	camera = scene.camera;
+	camera = scene->camera;
 	printf("Camera\n");
 	printf("coordinate: %f, %f, %f\n", camera.look_from.x, camera.look_from.y, camera.look_from.z);
 	printf("normal: %f, %f, %f\n", camera.look_at.x, camera.look_at.y, camera.look_at.z);
 	printf("fov: %f\n", camera.h_fov);
 	printf("----------\n");
-	light = scene.lights->element;
+	light = scene->lights->element;
 	printf("Light\n");
 	printf("coordinate: %f, %f, %f\n", light->origin.x, light->origin.y, light->origin.z);
 	printf("bright ratio: %f\n", light->bright_ratio);
-	printf("color: %f, %f, %f\n", scene.lights->albedo.r, scene.lights->albedo.g, scene.lights->albedo.b);
+	printf("color: %f, %f, %f\n", scene->lights->albedo.r, scene->lights->albedo.g, scene->lights->albedo.b);
 	printf("----------\n");
-	objects = scene.objects;
+	objects = scene->objects;
 	while (objects)
 	{
 		if (objects->type == CYLINDER)
@@ -77,19 +77,19 @@ void	print_scene(t_scene scene)
 
 void	render(t_data *data)
 {
-	t_scene	scene;
+	t_scene	*scene;
 	int		i;
 	int		j;
 
 	scene = data->scene;
 	print_scene(scene);
-	j = scene.canvas.height - 1;
+	j = scene->canvas.height - 1;
 	while (j >= 0)
 	{
 		printf("rendering... %.2f%%", \
-			(float)(scene.canvas.height - j) / scene.canvas.height * 100);
+			(float)(scene->canvas.height - j) / scene->canvas.height * 100);
 		i = 0;
-		while (i < scene.canvas.width)
+		while (i < scene->canvas.width)
 		{
 			rt_mlx_pixel_put(&data->img, i, j, color3_(0.5, 0.3, 0.4));
 			i++;
