@@ -75,23 +75,38 @@ void	print_scene(t_scene *scene)
 	printf("\n----------\n");
 }
 
+int	create_trgb(t_color3 color)
+{
+	const unsigned char	t = 0;
+	const unsigned char	r = 255.99 * color.r;
+	const unsigned char	g = 255.99 * color.g;
+	const unsigned char	b = 255.99 * color.b;
+
+	return (*(int *)(unsigned char [4]){b, g, r, t});
+}
+
 void	render(t_vars *vars)
 {
 	t_scene	*scene;
 	int		i;
 	int		j;
+	t_vec2	pixel_pos;
 
 	scene = vars->scene;
 	print_scene(scene);
 	j = scene->canvas.height - 1;
 	while (j >= 0)
 	{
-		printf("rendering... %.2f%%", \
-			(float)(scene->canvas.height - j) / scene->canvas.height * 100);
+//		printf("rendering... %.2f%%", \
+//			(float)(scene->canvas.height - j) / scene->canvas.height * 100);
 		i = 0;
 		while (i < scene->canvas.width)
 		{
-			rt_mlx_pixel_put(&vars->img, i, j, color3_(0.5, 0.3, 0.4));
+			pixel_pos.x = (double) i / (scene->canvas.width - 1);
+			pixel_pos.y = (double) j / (scene->canvas.height - 1);
+			scene->ray = primary_ray(&scene->camera, pixel_pos);
+//			color = create_trgb(trace_ray(scene));
+			rt_mlx_pixel_put(&vars->img, i, j, trace_ray(scene));
 			i++;
 		}
 		j--;
@@ -100,3 +115,44 @@ void	render(t_vars *vars)
 	printf("\n");
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
 }
+
+
+
+void	my_mlx_pixel_put(t_mlx_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
+
+/*
+void	render(t_vars *vars)
+{
+	int		dy;
+	int		dx;
+	int		color;
+	t_vec2	pixel_pos;
+	t_scene	*scene;
+
+	scene = vars->scene;
+	dy = 0;
+	while (dy < scene->canvas.height)
+	{
+		dx = 0;
+		while (dx < scene->canvas.width)
+		{
+			pixel_pos.x = (double) dx / (scene->canvas.width - 1);
+			pixel_pos.y = (double) dy / (scene->canvas.height - 1);
+			scene->ray = primary_ray(&scene->camera, pixel_pos);
+			color = create_trgb(trace_ray(scene));
+			my_mlx_pixel_put(&vars->img, dx, scene->canvas.height - 1 - dy, \
+			color);
+			++dx;
+		}
+		++dy;
+	}
+	return ;
+}
+
+ */
