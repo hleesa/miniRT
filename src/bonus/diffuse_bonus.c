@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
 t_color3	get_diffuse(t_vec3 normal, t_vec3 light_dir, t_color3 color)
 {

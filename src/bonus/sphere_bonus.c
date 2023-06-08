@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
 t_sphere	*sphere_(t_point3 center, double radius, t_vars *vars)
 {
