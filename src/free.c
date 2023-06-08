@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:03:50 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/08 17:08:46 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/08 20:41:20 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,18 @@ static void	_free_mlx(t_vars *vars)
 static void	_free_objects(t_object *objects)
 {
 	t_object	*cur;
+	t_object	*temp;
 
 	if (objects == NULL)
 		return ;
 	cur = objects;
 	while (cur)
 	{
+		temp = cur->next;
 		free(cur->element);
-		cur = cur->next;
+		free(cur);
+		cur = temp;
 	}
-	free(objects);
 }
 
 void	free_struct(t_vars *vars)
