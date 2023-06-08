@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:42:59 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 21:05:29 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/08 19:57:33 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	set_light(char **tokens, t_vars *vars)
 		print_read_error("cannot set element values", tokens[2], vars, tokens);
 	light->origin = origin;
 	light->bright_ratio = bright_ratio;
-	light->color = scl_mul(bright_ratio, light->color);
 }
 
 void	set_vars(char **tokens, t_vars *vars)

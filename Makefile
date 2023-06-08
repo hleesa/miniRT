@@ -6,7 +6,7 @@
 #    By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 16:27:39 by gychoi            #+#    #+#              #
-#    Updated: 2023/06/06 20:54:26 by gychoi           ###   ########.fr        #
+#    Updated: 2023/06/08 17:59:05 by gychoi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LVCDIR = $(LIBDIR)libvec/
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -O2
-DFLAGS = -MMD -MP -g
+DFLAGS = -MMD -MP
 CPPFLAGS = -Iinclude/ -I$(LFTDIR) -I$(MLXDIR) -I$(LVCDIR)
 LDFLAGS = -L$(MLXDIR) -L$(LFTDIR) -L$(LVCDIR)
 LDLIBS = -lmlx -lft -lvec
