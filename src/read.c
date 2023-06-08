@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 20:58:51 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 17:18:45 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/08 17:08:10 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	read_file(t_vars *vars, char *file)
 		tokens = _tokenize(vars, read_line);
 		free(read_line);
 		set_vars(tokens, vars);
-		free_tokens(tokens);
+		(void)free_tokens(tokens);
 	}
 	rt_close(fd, vars);
 }

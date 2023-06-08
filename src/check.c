@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 21:17:18 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 17:13:14 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/08 17:07:36 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_bool	check_element_csv(char *csv, int type_p, int type_d)
 	ret_val = FALSE;
 	csv_tokens = ft_split(csv, ',');
 	token_count = count_tokens(csv_tokens);
-	if (count_char(csv, ',') == 2 && count_tokens(csv_tokens) == 3)
+	if (count_char(csv, ',') == 2 && token_count == 3)
 	{
 		ret_val = TRUE;
 		while (token_count--)
@@ -73,8 +73,9 @@ t_bool	check_element_csv(char *csv, int type_p, int type_d)
 				ret_val = FALSE;
 		}
 	}
-	free_tokens(csv_tokens);
-	return (ret_val);
+	if (type_p == P_NORM && is_normalized(csv_tokens) == FALSE)
+		ret_val = FALSE;
+	return (free_tokens(csv_tokens) * ret_val);
 }
 
 t_bool	check_element_value(char *elem, int type_p, int type_d)

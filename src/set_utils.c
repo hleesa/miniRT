@@ -6,21 +6,23 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 22:27:41 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 17:25:49 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/08 17:27:04 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_bool	set_vars_value(char *elem, void *value, int type_d)
+t_bool	set_vars_value(char *elem, void *value, int type)
 {
 	int		error;
 
 	error = FALSE;
-	if (type_d == D_FLOAT)
+	if (type == D_FLOAT)
 		*(double *)value = rt_atof(elem, &error);
-	if (type_d == D_INT)
+	if (type == D_INT)
 		*(int *)value = ft_atoi(elem);
+	if (type == P_RADIUS)
+		*(double *)value = rt_atof(elem, &error) / 2.0;
 	if (error == TRUE)
 		return (FALSE);
 	return (TRUE);
@@ -51,6 +53,6 @@ t_bool	set_vars_csv(char *elem, void *csv, int type_s, int type_d)
 	if ((type_s == S_VEC) && (type_d == D_INT))
 		*(t_vec3 *)csv = vec3_(ft_atoi(tokens[0]), \
 			ft_atoi(tokens[1]), ft_atoi(tokens[2]));
-	free_tokens(tokens);
+	(void)free_tokens(tokens);
 	return (!err);
 }

@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:03:50 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 17:16:06 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/08 17:08:46 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ void	free_struct(t_vars *vars)
 	free(vars);
 }
 
-void	free_tokens(char **tokens)
+int	free_tokens(char **tokens)
 {
 	int	i;
 
 	if (tokens == NULL)
-		return ;
+		return (TRUE);
 	i = 0;
 	while (tokens[i])
 	{
@@ -56,4 +56,5 @@ void	free_tokens(char **tokens)
 		i++;
 	}
 	free(tokens);
+	return (TRUE);
 }

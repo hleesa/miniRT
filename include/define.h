@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 21:29:50 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 17:07:39 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/08 17:24:18 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@
 # define P_LIGHT 100
 # define P_NORM 101
 # define P_RGB 110
+# define P_RADIUS 111
 
 #endif
