@@ -61,9 +61,7 @@ t_color3	phong_lighting(t_scene *scene)
 		lights = lights->next;
 	}
 	light_color = add(light_color, scene->ambient.color);
-//	printf("before color: %f, %f, %f\n", light_color.r, light_color.g, light_color.b);
 	light_color = elem_prod(light_color, scene->hit.albedo);
-//	printf("after color: %f, %f, %f\n", light_color.r, light_color.g, light_color.b);
 	light_color = elem_min(light_color, color3_(1, 1, 1));
 	return (light_color);
 }

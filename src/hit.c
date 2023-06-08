@@ -23,7 +23,6 @@ t_hit	hit_(double t_max)
 
 void	init_intersect_object(t_bool (*intersect_object[OBJECT_TYPE_SIZE])())
 {
-//	intersect_object[CONE] = intersect_ray_cone;
 	intersect_object[PLANE] = intersect_ray_plane;
 	intersect_object[SPHERE] = intersect_ray_sphere;
 	intersect_object[CYLINDER] = intersect_ray_cylinder;
