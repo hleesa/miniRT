@@ -41,4 +41,8 @@
 # define P_RGB 110
 # define P_RADIUS 111
 
+# define ESC 53
+# define LIGHT_POINT 42
+# define INVALID_ROOT -1
+
 #endif
