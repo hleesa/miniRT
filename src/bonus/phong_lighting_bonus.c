@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
 t_bool	in_shadow(t_scene *scene, t_vec3 light_dir)
 {

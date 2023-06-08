@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
 static t_coefficient	get_coefficient(const t_cylinder *cylinder, t_ray *ray)
 {
