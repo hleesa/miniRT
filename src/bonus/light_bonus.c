@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
 t_light	*light_(t_point3 orig, t_color3 color, double bright, t_vars *vars)
 {

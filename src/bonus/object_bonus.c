@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
 t_object	*object_(t_object_type type, void *elem, t_color3 albedo, \
 					t_vars *vars)
