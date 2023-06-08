@@ -20,7 +20,7 @@ SRCS = add.c \
 	   dot.c \
 	   elem_max.c \
 	   elem_min.c \
-	   hadam_prod.c \
+	   elem_prod.c \
 	   mag.c \
 	   mag_sq.c \
 	   norm.c \

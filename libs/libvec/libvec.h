@@ -59,7 +59,7 @@ t_vec3		cross(t_vec3 u, t_vec3 v);
 double		dot(t_vec3 u, t_vec3 v);
 t_vec3		elem_max(t_vec3 u, t_vec3 v);
 t_vec3		elem_min(t_vec3 u, t_vec3 v);
-t_vec3		hadam_prod(t_vec3 u, t_vec3 v);
+t_vec3		elem_prod(t_vec3 u, t_vec3 v);
 double		mag(t_vec3 v);
 double		mag_sq(t_vec3 v);
 t_vec3		norm(t_vec3 v);

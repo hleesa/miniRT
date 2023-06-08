@@ -60,11 +60,6 @@ SOURCE = camera.c \
 		 set_utils.c \
 		 specular.c \
 		 sphere.c \
-		 vector.c \
-		 vector_add_min.c \
-		 vector_mag_norm.c \
-		 vector_product.c \
-
 
 SRCS = $(addprefix $(SRCDIR), $(SOURCE))
 

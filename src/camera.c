@@ -14,7 +14,9 @@
 
 static double	_degree_to_radian(double degree)
 {
-	return (degree * M_PI / 179.0);
+	if (degree == 180.0)
+		degree = 179.0;
+	return (degree * M_PI / 180.0);
 }
 
 static double	_get_width(double h_fov)
