@@ -32,7 +32,7 @@ t_hit *hit, t_point3 center)
 }
 
 t_bool	intersect_cylinder_base(t_object *object, t_ray *ray, t_hit *hit, \
-enum e_component type)
+enum e_cylinder type)
 {
 	double				root;
 	t_point3			center;

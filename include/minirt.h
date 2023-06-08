@@ -97,7 +97,7 @@ t_color3	get_specular(t_scene *scene, t_vec3 light_dir, t_color3 color);
 t_vec3	ray_at(double t, t_ray *ray);
 
 t_bool	intersect_cylinder_base(t_object *object, t_ray *ray, t_hit *hit, \
-enum e_component type);
+enum e_cylinder type);
 t_bool	intersect_cylinder_surface(t_object *object, t_ray *ray, t_hit *hit);
 t_bool	intersect_ray_cylinder(t_object *object, t_ray *ray, t_hit *hit);
 t_bool	intersect_ray_sphere(t_object *object, t_ray *ray, t_hit *hit);

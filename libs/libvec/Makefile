@@ -25,10 +25,7 @@ SRCS = add.c \
 	   mag_sq.c \
 	   norm.c \
 	   point3_.c \
-	   scl_add.c \
-	   scl_div.c \
 	   scl_mul.c \
-	   scl_sub.c \
 	   sub.c \
 	   vec2_.c \
 	   vec3_.c \
