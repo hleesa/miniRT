@@ -6,13 +6,13 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:44:48 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 20:48:47 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/08 18:01:25 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libvec.h"
 
-t_vec3	hadam_prod(t_vec3 u, t_vec3 v)
+t_vec3	elem_prod(t_vec3 u, t_vec3 v)
 {
 	return (vec3_(u.ai * v.ai, u.bj * v.bj, u.ck * v.ck));
 }

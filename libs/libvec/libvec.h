@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 20:33:54 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 14:46:31 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/08 18:01:38 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ t_vec3		cross(t_vec3 u, t_vec3 v);
 double		dot(t_vec3 u, t_vec3 v);
 t_vec3		elem_max(t_vec3 u, t_vec3 v);
 t_vec3		elem_min(t_vec3 u, t_vec3 v);
-t_vec3		hadam_prod(t_vec3 u, t_vec3 v);
+t_vec3		elem_prod(t_vec3 u, t_vec3 v);
 double		mag(t_vec3 v);
 double		mag_sq(t_vec3 v);
 t_vec3		norm(t_vec3 v);

@@ -6,7 +6,7 @@
 #    By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 20:30:05 by gychoi            #+#    #+#              #
-#    Updated: 2023/06/01 22:59:26 by gychoi           ###   ########.fr        #
+#    Updated: 2023/06/08 18:01:09 by gychoi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS = add.c \
 	   dot.c \
 	   elem_max.c \
 	   elem_min.c \
-	   hadam_prod.c \
+	   elem_prod.c \
 	   mag.c \
 	   mag_sq.c \
 	   norm.c \
