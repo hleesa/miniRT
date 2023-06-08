@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 22:25:39 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 19:48:46 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/08 21:13:02 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,11 @@ static t_scene	*_init_scene(t_vars *vars)
 
 	scene = rt_malloc(sizeof(t_scene), vars);
 	scene->canvas = _init_canvas(Y_END);
-	scene->camera = camera_(scene->canvas, point3_(0, 0, 0), vec3_(0, 0, 1), INITIAL_VALUE);
+	scene->camera = \
+	camera_(scene->canvas, point3_(0, 0, 0), vec3_(0, 0, 1), INITIAL_VALUE);
 	scene->ambient = _init_ambient();
-	scene->light = object_(LIGHT_POINT, _init_light(vars), color3_(1, 1, 1), vars);
+	scene->light = \
+	object_(LIGHT_POINT, _init_light(vars), color3_(1, 1, 1), vars);
 	scene->objects = NULL;
 	return (scene);
 }

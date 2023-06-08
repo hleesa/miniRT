@@ -6,20 +6,21 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 20:01:05 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 17:18:18 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/08 21:10:48 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_object	*object_(t_object_type type, void *elem, t_color3 albd, t_vars *vars)
+t_object	*object_(t_object_type type, void *elem, t_color3 albedo, \
+					t_vars *vars)
 {
 	t_object	*object;
 
 	object = rt_malloc(sizeof(t_object), vars);
 	object->element = elem;
 	object->next = NULL;
-	object->albedo = albd;
+	object->albedo = albedo;
 	object->type = type;
 	return (object);
 }

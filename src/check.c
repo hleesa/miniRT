@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 21:17:18 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/08 20:23:13 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/08 21:11:43 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ t_bool	check_element_csv(char *csv, int type_p, int type_d)
 				ret_val = FALSE;
 		}
 	}
-	if (ret_val == TRUE && type_p == P_NORM && is_normalized(csv_tokens) == FALSE)
+	if (ret_val && type_p == P_NORM && is_normalized(csv_tokens) == FALSE)
 		ret_val = FALSE;
 	return (free_tokens(csv_tokens) * ret_val);
 }

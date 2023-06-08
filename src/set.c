@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:42:59 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/08 19:57:33 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/08 21:14:40 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	set_camera(char **tokens, t_vars *vars)
 		print_read_error("cannot set element values", tokens[2], vars, tokens);
 	if (set_vars_value(tokens[3], &h_fov, D_FLOAT) == FALSE)
 		print_read_error("cannot set element values", tokens[3], vars, tokens);
-	vars->scene->camera = camera_(vars->scene->canvas, look_from, look_at, h_fov);
+	vars->scene->camera = \
+	camera_(vars->scene->canvas, look_from, look_at, h_fov);
 }
 
 void	set_light(char **tokens, t_vars *vars)

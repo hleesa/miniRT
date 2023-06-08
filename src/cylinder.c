@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 21:37:30 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 17:15:30 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/08 21:12:06 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_cylinder	*cylinder_(t_point3 center, t_vec3 normal, t_vec2 dh, t_vars *var)
 	cylinder->radius_sq = dh.x * dh.x;
 	cylinder->normal = norm(normal);
 	cylinder->base_center = add(center, \
-	scl_mul(cylinder->height/2, scl_mul(-1,cylinder->normal)));
+	scl_mul(cylinder->height / 2, scl_mul(-1, cylinder->normal)));
 	cylinder->top_center = add(cylinder->base_center, \
 		scl_mul(cylinder->height, cylinder->normal));
 	return (cylinder);
