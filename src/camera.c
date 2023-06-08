@@ -14,6 +14,8 @@
 
 static double	_degree_to_radian(double degree)
 {
+	if (degree == 180.0)
+		degree = 179.0;
 	return (degree * M_PI / 180.0);
 }
 

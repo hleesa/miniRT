@@ -23,21 +23,6 @@ t_sphere	*sphere_(t_point3 center, double radius, t_vars *vars)
 	return (sphere);
 }
 
-/*
-t_sphere	*sphere_(t_point3 center, double radius)
-{
-	t_sphere	*this;
-
-	this = (t_sphere *)malloc(sizeof(t_sphere));
-	if (this == NULL)
-		return (NULL);
-	this->center = center;
-	this->radius = radius;
-	this->radius_sq = radius * radius;
-	return (this);
-}
- */
-
 static t_coefficient	get_coefficient(const t_sphere *sphere, t_ray *ray)
 {
 	t_coefficient	coef;
