@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
+/*   mag_sq_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/02 20:20:33 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/08 21:17:07 by gychoi           ###   ########.fr       */
+/*   Created: 2023/06/08 22:02:05 by gychoi            #+#    #+#             */
+/*   Updated: 2023/06/08 22:02:09 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "libvec_bonus.h"
 
-int	exit_hook(t_vars *vars)
+double	mag_sq(t_vec3 v)
 {
-	free_struct(vars);
-	atexit(check_leaks);
-	exit(0);
-}
-
-int	key_hook(int keycode, t_vars *vars)
-{
-	if (keycode == ESC)
-	{
-		free_struct(vars);
-		atexit(check_leaks);
-		exit(0);
-	}
-	return (0);
+	return (v.ai * v.ai + v.bj * v.bj + v.ck * v.ck);
 }

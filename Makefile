@@ -6,7 +6,7 @@
 #    By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 16:27:39 by gychoi            #+#    #+#              #
-#    Updated: 2023/06/08 17:59:05 by gychoi           ###   ########.fr        #
+#    Updated: 2023/06/08 22:05:33 by gychoi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,12 @@ LIBDIR = libs/
 MLXDIR = $(LIBDIR)minilibx_opengl_20191021/
 LFTDIR = $(LIBDIR)libft/
 LVCDIR = $(LIBDIR)libvec/
+MDTDIR = mandatory/
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -O2
 DFLAGS = -MMD -MP
-CPPFLAGS = -Iinclude/ -I$(LFTDIR) -I$(MLXDIR) -I$(LVCDIR)
+CPPFLAGS = -Iinclude/mandatory/ -I$(LFTDIR) -I$(MLXDIR) -I$(LVCDIR)
 LDFLAGS = -L$(MLXDIR) -L$(LFTDIR) -L$(LVCDIR)
 LDLIBS = -lmlx -lft -lvec
 MLXFLAGS = -framework OpenGL -framework AppKit
@@ -31,6 +32,7 @@ LIBFT = $(LFTDIR)libft.a
 LIBVEC = $(LVCDIR)libvec.a
 
 SRCDIR = src/
+MDTDIR = $(SRCDIR)mandatory/
 SOURCE = camera.c \
 		 check.c \
 		 check_utils.c \
@@ -61,14 +63,14 @@ SOURCE = camera.c \
 		 specular.c \
 		 sphere.c \
 
-SRCS = $(addprefix $(SRCDIR), $(SOURCE))
+SRCS = $(addprefix $(MDTDIR), $(SOURCE))
 
 OBJDIR = build/
 OBJECT = $(patsubst %.c, %.o, $(SOURCE))
 OBJS = $(addprefix $(OBJDIR), $(OBJECT))
 DEPS = $(OBJS:.o=.d)
 
-$(OBJDIR)%.o: $(SRCDIR)%.c
+$(OBJDIR)%.o: $(MDTDIR)%.c
 	@mkdir -p $(OBJDIR)
 	$(COMPILE.c) $(DFLAGS) $(OUTPUT_OPTION) $<
 
