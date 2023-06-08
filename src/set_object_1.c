@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 20:53:46 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 17:24:28 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/08 17:25:22 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_cylinder	*set_cylinder(char **tokens, t_vars *vars)
 		print_read_error("cannot set element values", tokens[1], vars, tokens);
 	if (set_vars_csv(tokens[2], &normal, S_VEC, D_FLOAT) == FALSE)
 		print_read_error("cannot set element values", tokens[2], vars, tokens);
-	if (set_vars_value(tokens[3], &dh.x, D_FLOAT) == FALSE)
+	if (set_vars_value(tokens[3], &dh.x, P_RADIUS) == FALSE)
 		print_read_error("cannot set element values", tokens[3], vars, tokens);
 	if (set_vars_value(tokens[4], &dh.y, D_FLOAT) == FALSE)
 		print_read_error("cannot set element values", tokens[4], vars, tokens);

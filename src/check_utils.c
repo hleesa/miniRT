@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 20:03:45 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/06 17:59:16 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/08 17:16:32 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,22 @@ t_bool	is_float_fmt(char *elem)
 				return (FALSE);
 		}
 	}
+	return (TRUE);
+}
+
+t_bool	is_normalized(char **csv_tokens)
+{
+	int		error;
+	double	length;
+	t_vec3	vec_check;
+
+	vec_check.ai = rt_atof(csv_tokens[0], &error);
+	vec_check.bj = rt_atof(csv_tokens[1], &error);
+	vec_check.ck = rt_atof(csv_tokens[2], &error);
+	if (error == TRUE)
+		return (FALSE);
+	length = mag(vec_check);
+	if (length != 1.0)
+		return (FALSE);
 	return (TRUE);
 }

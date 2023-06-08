@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 20:10:26 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/07 19:54:45 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/08 17:26:15 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,14 @@ size_t		count_char(char *line, char c);
 size_t		count_tokens(char **tokens);
 t_bool		is_int_fmt(char *elem);
 t_bool		is_float_fmt(char *elem);
+t_bool		is_normalized(char **csv_tokens);
 
 t_vars		*init_vars(void);
 
 void		read_file(t_vars *vars, char *file);
 
 void		set_vars(char **tokens, t_vars *vars);
-t_bool		set_vars_value(char *elem, void *value, int type_d);
+t_bool		set_vars_value(char *elem, void *value, int type);
 t_bool		set_vars_csv(char *elem, void *csv, int type_s, int type_d);
 
 t_cylinder	*set_cylinder(char **tokens, t_vars *vars);
@@ -55,7 +56,7 @@ void		set_object_sphere(char **tokens, t_vars *vars);
 void		render(t_vars *vars);
 
 void		free_struct(t_vars *vars);
-void		free_tokens(char **tokens);
+int			free_tokens(char **tokens);
 
 t_camera	camera_(t_canvas canvas, t_point3 from, t_vec3 at, double h_fov);
 
