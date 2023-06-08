@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hadam_prod.c                                       :+:      :+:    :+:   */
+/*   elem_prod.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "libvec.h"
 
-t_vec3	hadam_prod(t_vec3 u, t_vec3 v)
+t_vec3	elem_prod(t_vec3 u, t_vec3 v)
 {
 	return (vec3_(u.ai * v.ai, u.bj * v.bj, u.ck * v.ck));
 }

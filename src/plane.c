@@ -22,20 +22,6 @@ t_plane	*plane_(t_point3 point, t_vec3 normal, t_vars *vars)
 	return (plane);
 }
 
-/*
-t_plane	*plane_(t_point3 point, t_vec3 normal)
-{
-	t_plane	*this;
-
-	this = (t_plane *)malloc(sizeof(t_plane));
-	if (this == NULL)
-		return (NULL);
-	this->point = point;
-	this->normal = normal;
-	return (this);
-}
-*/
-
 t_bool	intersect_ray_plane(t_object *object, t_ray *ray, t_hit *hit)
 {
 	double			root;
