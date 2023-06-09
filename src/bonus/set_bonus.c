@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 21:54:21 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/08 21:54:21 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/09 17:24:45 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,11 @@ void	set_camera(char **tokens, t_vars *vars)
 
 void	set_light(char **tokens, t_vars *vars)
 {
-	t_light		*light;
 	t_point3	origin;
+	t_color3	color;
 	double		bright_ratio;
+	t_light		*light;
 
-	light = (t_light *)vars->scene->light->element;
-	if (light->bright_ratio != INITIAL_VALUE)
-		print_read_error("duplicated light element", NULL, vars, tokens);
 	if (check_element_count(tokens, 4) == FALSE)
 		print_read_error("wrong light element count", NULL, vars, tokens);
 	if (check_element_csv(tokens[1], P_COORD, D_FLOAT) == FALSE)
@@ -80,8 +78,13 @@ void	set_light(char **tokens, t_vars *vars)
 		print_read_error("cannot set element values", tokens[1], vars, tokens);
 	if (set_vars_value(tokens[2], &bright_ratio, D_FLOAT) == FALSE)
 		print_read_error("cannot set element values", tokens[2], vars, tokens);
-	light->origin = origin;
-	light->bright_ratio = bright_ratio;
+	if (set_vars_csv(tokens[3], &color, S_COLOR, D_FLOAT) == FALSE)
+		print_read_error("cannot set element values", tokens[3], vars, tokens);
+	light = light_(origin, color, bright_ratio, vars);
+	if (vars->scene->objects == NULL)
+		vars->scene->light = object_(LIGHT_POINT, light, color, vars);
+	else
+		append(&vars->scene->light, object_(LIGHT_POINT, light, color, vars));
 }
 
 void	set_vars(char **tokens, t_vars *vars)
@@ -92,7 +95,7 @@ void	set_vars(char **tokens, t_vars *vars)
 		set_ambient(tokens, vars);
 	else if (ft_strncmp(tokens[0], "C", 2) == 0)
 		set_camera(tokens, vars);
-	else if (ft_strncmp(tokens[0], "L", 2) == 0)
+	else if (ft_strncmp(tokens[0], "l", 2) == 0)
 		set_light(tokens, vars);
 	else if (ft_strncmp(tokens[0], "cy", 3) == 0)
 		set_object_cylinder(tokens, vars);

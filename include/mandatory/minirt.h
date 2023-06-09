@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 20:10:26 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/08 21:11:00 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/09 17:05:57 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@
 # include "struct.h"
 # include "typedef.h"
 
+t_ambient	ambient_(t_color3 color, double lighting_ratio);
+
 t_camera	camera_(t_canvas canvas, t_point3 from, t_vec3 at, double h_fov);
+
+t_canvas	canvas_(int height);
 
 t_bool		check_element_attr(char *elem, int type_p);
 t_bool		check_element_count(char **tokens, size_t size);
@@ -60,7 +64,8 @@ int			key_hook(int keycode, t_vars *vars);
 
 t_vars		*init_vars(void);
 
-t_light		*light_(t_point3 orig, t_color3 color, double bright, t_vars *vars);
+t_light		*light_(t_point3 origin, t_color3 color, \
+			double bright_ratio, t_vars *vars);
 
 void		render(t_vars *vars);
 

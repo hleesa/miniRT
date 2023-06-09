@@ -6,7 +6,7 @@
 #    By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 16:27:39 by gychoi            #+#    #+#              #
-#    Updated: 2023/06/09 14:44:19 by gychoi           ###   ########.fr        #
+#    Updated: 2023/06/09 16:22:47 by gychoi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,9 +41,10 @@ LIBFT = $(LFTDIR)libft.a
 LIBVEC = $(LVCDIR)libvec.a
 LIBVEC_BONUS = $(LVBNSD)libvec_bonus.a
 
-# makefile 보너스 연결하기
 MDTDIR = src/mandatory/
-MDTSRC = camera.c \
+MDTSRC = ambient.c \
+		 camera.c \
+		 canvas.c \
 		 check.c \
 		 check_utils.c \
 		 cylinder.c \
@@ -74,7 +75,9 @@ MDTSRC = camera.c \
 		 sphere.c \
 
 BNSDIR = src/bonus/
-BNSSRC = camera_bonus.c \
+BNSSRC = ambient_bonus.c \
+		 camera_bonus.c \
+		 canvas_bonus.c \
 		 check_bonus.c \
 		 check_utils_bonus.c \
 		 cone_base_bonus.c \
@@ -117,10 +120,6 @@ MDDEPS = $(MDOBJS:.o=.d)
 BNSOBJ = $(patsubst %.c, %.o, $(BNSSRC))
 BNOBJS = $(addprefix $(BNOBJD), $(BNSOBJ))
 BNDEPS = $(BNOBJS:.o=.d)
-
-#CPPFLAGS = -I$(LFTDIR) -I$(MLXDIR) # -I$(addprefix $(INCDIR), $(MDTDIR)) -I$(LVCDIR) 
-#LDFLAGS = -L$(MLXDIR) -L$(LFTDIR) #  -L$(LVCDIR)
-#LDLIBS = -lmlx -lft # lvec, lvec_bonus
 
 ifdef WITH_BONUS
 	CPPFLAGS += -Iinclude/bonus/ -I$(LVBNSD)

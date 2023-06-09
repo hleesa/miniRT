@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 14:17:07 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/09 14:28:23 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/09 17:05:11 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@
 # include "struct_bonus.h"
 # include "typedef_bonus.h"
 
+t_ambient	ambient_(t_color3 color, double lighting_ratio);
+
 t_camera	camera_(t_canvas canvas, t_point3 from, t_vec3 at, double h_fov);
+
+t_canvas	canvas_(int height);
 
 t_bool		check_element_attr(char *elem, int type_p);
 t_bool		check_element_count(char **tokens, size_t size);
@@ -47,6 +51,9 @@ int			free_tokens(char **tokens);
 t_hit		hit_(double t_max);
 t_bool		hit_objects(t_object *objects, t_ray *ray, t_hit *hit);
 
+t_bool		intersect_cone_base(t_object *object, t_ray *ray, t_hit *hit);
+t_bool		intersect_cone_surface(t_object *object, t_ray *ray, t_hit *hit);
+t_bool		intersect_ray_cone(t_object *object, t_ray *ray, t_hit *hit);
 t_bool		intersect_cylinder_base(t_object *object, t_ray *ray, t_hit *hit, \
 			enum e_cylinder type);
 t_bool		intersect_cylinder_surface(t_object *object, t_ray *ray, \
@@ -60,7 +67,8 @@ int			key_hook(int keycode, t_vars *vars);
 
 t_vars		*init_vars(void);
 
-t_light		*light_(t_point3 orig, t_color3 color, double bright, t_vars *vars);
+t_light		*light_(t_point3 origin, t_color3 color, \
+			double bright_ratio, t_vars *vars);
 
 void		render(t_vars *vars);
 
@@ -108,10 +116,5 @@ void		set_object_sphere(char **tokens, t_vars *vars);
 t_color3	get_specular(t_scene *scene, t_vec3 light_dir, t_color3 color);
 
 t_sphere	*sphere_(t_point3 center, double radius, t_vars *vars);
-
-t_bool	intersect_cone_base(t_object *object, t_ray *ray, t_hit *hit);
-t_bool	intersect_cone_surface(t_object *object, t_ray *ray, t_hit *hit);
-t_bool	intersect_ray_cone(t_object *object, t_ray *ray, t_hit *hit);
-
 
 #endif
