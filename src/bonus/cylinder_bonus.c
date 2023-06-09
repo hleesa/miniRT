@@ -6,20 +6,24 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 21:52:41 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/08 22:07:07 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/09 20:12:54 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt_bonus.h"
 
-t_cylinder	*cylinder_(t_point3 center, t_vec3 normal, t_vec2 dh, t_vars *var)
+t_cylinder	*cylinder_(t_point3 center, t_vec3 normal, t_vec2 dh, t_vars *vars)
 {
 	t_cylinder	*cylinder;
+	double		height;
+	double		radius;
 
-	cylinder = rt_malloc(sizeof(t_cylinder), var);
-	cylinder->height = dh.y;
-	cylinder->radius = dh.x;
-	cylinder->radius_sq = dh.x * dh.x;
+	cylinder = rt_malloc(sizeof(t_cylinder), vars);
+	height = dh.y;
+	radius = dh.x;
+	cylinder->height = height;
+	cylinder->radius = radius;
+	cylinder->radius_sq = radius * radius;
 	cylinder->normal = norm(normal);
 	cylinder->base_center = add(center, \
 	scl_mul(cylinder->height / 2, scl_mul(-1, cylinder->normal)));

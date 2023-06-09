@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 21:54:21 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/09 17:24:45 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/09 20:14:21 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	set_light(char **tokens, t_vars *vars)
 	if (set_vars_csv(tokens[3], &color, S_COLOR, D_FLOAT) == FALSE)
 		print_read_error("cannot set element values", tokens[3], vars, tokens);
 	light = light_(origin, color, bright_ratio, vars);
-	if (vars->scene->objects == NULL)
+	if (vars->scene->light == NULL)
 		vars->scene->light = object_(LIGHT_POINT, light, color, vars);
 	else
 		append(&vars->scene->light, object_(LIGHT_POINT, light, color, vars));
@@ -95,8 +95,10 @@ void	set_vars(char **tokens, t_vars *vars)
 		set_ambient(tokens, vars);
 	else if (ft_strncmp(tokens[0], "C", 2) == 0)
 		set_camera(tokens, vars);
-	else if (ft_strncmp(tokens[0], "l", 2) == 0)
+	else if (ft_strncmp(tokens[0], "L", 2) == 0)
 		set_light(tokens, vars);
+	else if (ft_strncmp(tokens[0], "co", 3) == 0)
+		set_object_cone(tokens, vars);
 	else if (ft_strncmp(tokens[0], "cy", 3) == 0)
 		set_object_cylinder(tokens, vars);
 	else if (ft_strncmp(tokens[0], "pl", 3) == 0)

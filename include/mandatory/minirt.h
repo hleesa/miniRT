@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 20:10:26 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/09 17:05:57 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/09 18:59:48 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_bool		is_int_fmt(char *elem);
 t_bool		is_float_fmt(char *elem);
 t_bool		is_normalized(char **csv_tokens);
 
-t_cylinder	*cylinder_(t_point3 center, t_vec3 normal, t_vec2 dh, t_vars *dat);
+t_cylinder	*cylinder_(t_point3 center, t_vec3 normal, t_vec2 dh, t_vars *vars);
 
 t_color3	get_diffuse(t_vec3 normal, t_vec3 light_dir, t_color3 color);
 
