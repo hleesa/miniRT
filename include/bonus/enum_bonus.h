@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook_bonus.c                                       :+:      :+:    :+:   */
+/*   enum_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/08 21:53:16 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/09 14:28:51 by gychoi           ###   ########.fr       */
+/*   Created: 2023/06/09 14:16:36 by gychoi            #+#    #+#             */
+/*   Updated: 2023/06/09 14:16:44 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt_bonus.h"
+#ifndef ENUM_BONUS_H
+# define ENUM_BONUS_H
 
-int	exit_hook(t_vars *vars)
+enum e_bool
 {
-	free_struct(vars);
-	exit(0);
-}
+	FALSE,
+	TRUE,
+};
 
-int	key_hook(int keycode, t_vars *vars)
+enum e_object_type
 {
-	if (keycode == ESC)
-	{
-		free_struct(vars);
-		exit(0);
-	}
-	return (0);
-}
+	PLANE,
+	SPHERE,
+	CYLINDER,
+	OBJECT_TYPE_SIZE,
+};
+
+enum e_cylinder
+{
+	TOP,
+	BASE,
+};
+
+#endif

@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook_bonus.c                                       :+:      :+:    :+:   */
+/*   extern_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/08 21:53:16 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/09 14:28:51 by gychoi           ###   ########.fr       */
+/*   Created: 2023/06/09 14:16:55 by gychoi            #+#    #+#             */
+/*   Updated: 2023/06/09 14:27:33 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt_bonus.h"
+#ifndef EXTERN_BONUS_H
+# define EXTERN_BONUS_H
 
-int	exit_hook(t_vars *vars)
-{
-	free_struct(vars);
-	exit(0);
-}
+# include <fcntl.h>
+# include <math.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-int	key_hook(int keycode, t_vars *vars)
-{
-	if (keycode == ESC)
-	{
-		free_struct(vars);
-		exit(0);
-	}
-	return (0);
-}
+# include "libft.h"
+# include "libvec_bonus.h"
+# include "mlx.h"
+
+#endif
