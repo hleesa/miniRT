@@ -21,6 +21,7 @@ enum e_bool
 
 enum e_object_type
 {
+	CONE,
 	PLANE,
 	SPHERE,
 	CYLINDER,
