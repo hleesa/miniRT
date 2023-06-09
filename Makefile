@@ -77,6 +77,9 @@ BNSDIR = src/bonus/
 BNSSRC = camera_bonus.c \
 		 check_bonus.c \
 		 check_utils_bonus.c \
+		 cone_base_bonus.c \
+		 cone_bonus.c \
+		 cone_surfcae_bonus.c \
 		 cylinder_bonus.c \
 		 cylinder_base_bonus.c \
 		 cylinder_surface_bonus.c \

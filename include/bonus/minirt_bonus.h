@@ -109,4 +109,9 @@ t_color3	get_specular(t_scene *scene, t_vec3 light_dir, t_color3 color);
 
 t_sphere	*sphere_(t_point3 center, double radius, t_vars *vars);
 
+t_bool	intersect_cone_base(t_object *object, t_ray *ray, t_hit *hit);
+t_bool	intersect_cone_surface(t_object *object, t_ray *ray, t_hit *hit);
+t_bool	intersect_ray_cone(t_object *object, t_ray *ray, t_hit *hit);
+
+
 #endif

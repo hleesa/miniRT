@@ -103,6 +103,18 @@ struct s_ray
 	t_point3	origin;
 };
 
+typedef struct s_cone
+{
+	double		height;
+	double		radius;
+	double		radius_sq;
+	t_vec3		normal;
+	t_vec3		h_dir;
+	t_vec3		h_normal;
+	t_point3	tip_center;
+	t_point3	base_center;
+}	t_cone;
+
 struct s_scene
 {
 	t_canvas	canvas;
