@@ -25,7 +25,8 @@ t_cone	*cone_(t_point3 center, t_vec3 normal, t_vec2 dh, t_vars *vars)
 	this->radius = radius;
 	this->radius_sq = radius * radius;
 	this->normal = norm(normal);
-	this->base_center = center;
+	this->base_center = add(center, \
+	scl_mul(this->height / 2, scl_mul(-1, this->normal)));
 	this->tip_center = add(this->base_center, scl_mul(height, this->normal));
 	this->h_dir = sub(this->base_center, this->tip_center);
 	this->h_normal = norm(this->h_dir);
