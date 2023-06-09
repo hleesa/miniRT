@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 14:17:36 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/09 14:17:43 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/09 20:49:23 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef int						t_object_type;
 typedef struct s_ambient		t_ambient;
 typedef struct s_canvas			t_canvas;
 typedef struct s_camera			t_camera;
+typedef struct s_checkers		t_checkers;
 typedef struct s_coefficient	t_coefficient;
 typedef struct s_cylinder		t_cylinder;
 typedef struct s_hit			t_hit;

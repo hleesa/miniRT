@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 14:17:07 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/09 19:00:59 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/09 20:49:49 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ t_bool		is_int_fmt(char *elem);
 t_bool		is_float_fmt(char *elem);
 t_bool		is_normalized(char **csv_tokens);
 
+t_checkers	*checkers_(t_point3 point, t_vec3 normal, t_vars *vars);
+
 t_cone		*cone_(t_point3 center, t_vec3 normal, t_vec2 dh, t_vars *vars);
 
 t_cylinder	*cylinder_(t_point3 center, t_vec3 normal, t_vec2 dh, t_vars *vars);
@@ -61,6 +63,7 @@ t_bool		intersect_cylinder_base(t_object *object, t_ray *ray, t_hit *hit, \
 t_bool		intersect_cylinder_surface(t_object *object, t_ray *ray, \
 			t_hit *hit);
 t_bool		intersect_ray_cylinder(t_object *object, t_ray *ray, t_hit *hit);
+t_bool		intersect_ray_checkers(t_object *object, t_ray *ray, t_hit *hit);
 t_bool		intersect_ray_sphere(t_object *object, t_ray *ray, t_hit *hit);
 t_bool		intersect_ray_plane(t_object *object, t_ray *ray, t_hit *hit);
 
@@ -112,6 +115,7 @@ t_cone		*set_cone(char **tokens, t_vars *vars);
 t_cylinder	*set_cylinder(char **tokens, t_vars *vars);
 t_plane		*set_plane(char **tokens, t_vars *vars);
 t_sphere	*set_sphere(char **tokens, t_vars *vars);
+void		set_object_checkers(char **tokens, t_vars *vars);
 void		set_object_cone(char **tokens, t_vars *vars);
 void		set_object_cylinder(char **tokens, t_vars *vars);
 void		set_object_plane(char **tokens, t_vars *vars);
