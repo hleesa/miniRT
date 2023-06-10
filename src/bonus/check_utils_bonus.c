@@ -85,10 +85,11 @@ t_bool	is_float_fmt(char *elem)
 
 t_bool	is_normalized(char **csv_tokens)
 {
-	int		error;
+	t_bool	error;
 	double	length;
 	t_vec3	vec_check;
 
+	error = FALSE;
 	vec_check.ai = rt_atof(csv_tokens[0], &error);
 	vec_check.bj = rt_atof(csv_tokens[1], &error);
 	vec_check.ck = rt_atof(csv_tokens[2], &error);

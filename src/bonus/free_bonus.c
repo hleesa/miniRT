@@ -45,12 +45,12 @@ void	free_struct(t_vars *vars)
 	free(vars);
 }
 
-int	free_tokens(char **tokens)
+void	free_tokens(char **tokens)
 {
 	int	i;
 
 	if (tokens == NULL)
-		return (TRUE);
+		return ;
 	i = 0;
 	while (tokens[i])
 	{
@@ -58,5 +58,4 @@ int	free_tokens(char **tokens)
 		i++;
 	}
 	free(tokens);
-	return (TRUE);
 }

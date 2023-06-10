@@ -13,7 +13,6 @@
 .DEFAULT_GOAL := all
 
 NAME = miniRT
-NAME_BONUS = miniRT_bonus
 
 LIBDIR = libs/
 MLXDIR = $(LIBDIR)minilibx_opengl_20191021/
@@ -28,7 +27,7 @@ MDOBJD = build/
 BNOBJD = build_bonus/
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -O2
+CFLAGS = -Wall -Wextra -Werror -O3
 DFLAGS = -MMD -MP
 CPPFLAGS = -I$(MLXDIR) -I$(LFTDIR)
 LDFLAGS = -L$(MLXDIR) -L$(LFTDIR)
@@ -151,10 +150,6 @@ $(NAME): $(COMPILE_OBJECT) $(LIBFT) $(MLX) $(COMPILE_LIBRARY)
 	$(LINK.o) $^ $(LDLIBS) $(MLXFLAGS) -o $@
 	@install_name_tool -change libmlx.dylib $(MLXDIR)libmlx.dylib $(NAME)
 
-$(NAME_BONUS): $(COMPILE_OBJECT) $(LIBFT) $(MLX) $(COMPILE_LIBRARY)
-	$(LINK.o) $^ $(LDLIBS) $(MLXFLAGS) -o $@
-	@install_name_tool -change libmlx.dylib $(MLXDIR)libmlx.dylib $(NAME_BONUS)
-
 $(LIBFT): .FORCE
 	$(MAKE) -C $(LFTDIR)
 
@@ -175,13 +170,11 @@ $(MLX): .FORCE
 
 all:
 	$(RM) $(BNOBJD)
-	$(RM) $(NAME_BONUS)
 	$(MAKE) $(NAME)
 
 bonus:
 	$(RM) $(MDOBJD)
-	$(RM) $(NAME)
-	$(MAKE) $(NAME_BONUS) WITH_BONUS=1
+	$(MAKE) $(NAME) WITH_BONUS=1
 
 clean:
 	$(MAKE) -C $(LFTDIR) clean

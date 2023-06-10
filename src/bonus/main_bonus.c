@@ -16,7 +16,7 @@ static int	_print_usage(void)
 {
 	printf("Usage: ./miniRT <rt_file>\n");
 	printf("<rt_file> should be a file with the '.rt' extension.\n");
-	return (1);
+	return (EXIT_FAILURE);
 }
 
 int	main(int argc, char **argv)
@@ -31,5 +31,5 @@ int	main(int argc, char **argv)
 	mlx_key_hook(vars->win, key_hook, vars);
 	mlx_hook(vars->win, RED_CROSS, 0, exit_hook, vars);
 	mlx_loop(vars->mlx);
-	return (0);
+	return (EXIT_SUCCESS);
 }
