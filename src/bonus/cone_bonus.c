@@ -6,7 +6,7 @@
 /*   By: salee2 <salee2@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 20:21:24 by salee2            #+#    #+#             */
-/*   Updated: 2023/06/09 20:12:36 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/09 20:42:35 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 t_cone	*cone_(t_point3 center, t_vec3 normal, t_vec2 dh, t_vars *vars)
 {
-	t_cone	*this;
+	t_cone	*cone;
 	double	height;
 	double	radius;
 
-	this = rt_malloc(sizeof(t_cone), vars);
+	cone = rt_malloc(sizeof(t_cone), vars);
 	height = dh.y;
 	radius = dh.x;
 	this->height = height;

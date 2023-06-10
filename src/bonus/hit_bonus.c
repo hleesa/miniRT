@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 21:53:12 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/08 21:53:13 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/09 20:48:28 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	init_intersect_object(t_bool (*intersect_object[OBJECT_TYPE_SIZE])())
 	intersect_object[PLANE] = intersect_ray_plane;
 	intersect_object[SPHERE] = intersect_ray_sphere;
 	intersect_object[CYLINDER] = intersect_ray_cylinder;
+	intersect_object[CHECKERS] = intersect_ray_checkers;
 	return ;
 }
 

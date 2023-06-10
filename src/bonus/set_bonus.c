@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 21:54:21 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/09 20:14:21 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/09 20:59:27 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ void	set_vars(char **tokens, t_vars *vars)
 		set_camera(tokens, vars);
 	else if (ft_strncmp(tokens[0], "L", 2) == 0)
 		set_light(tokens, vars);
+	else if (ft_strncmp(tokens[0], "ch", 3) == 0)
+		set_object_checkers(tokens, vars);
 	else if (ft_strncmp(tokens[0], "co", 3) == 0)
 		set_object_cone(tokens, vars);
 	else if (ft_strncmp(tokens[0], "cy", 3) == 0)

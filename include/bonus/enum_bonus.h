@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 14:16:36 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/09 16:32:26 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/09 20:41:19 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ enum e_object_type
 	PLANE,
 	SPHERE,
 	CYLINDER,
+	CHECKERS,
 	OBJECT_TYPE_SIZE,
 };
 

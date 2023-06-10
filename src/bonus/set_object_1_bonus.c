@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 21:54:25 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/08 21:54:25 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/09 20:40:42 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,32 @@ void	set_object_plane(char **tokens, t_vars *vars)
 		vars->scene->objects = object_(PLANE, plane, color, vars);
 	else
 		append(&vars->scene->objects, object_(PLANE, plane, color, vars));
+}
+
+void	set_object_checkers(char **tokens, t_vars *vars)
+{
+	t_checkers	*chkrs;
+	t_point3	point;
+	t_vec3		normal;
+	t_color3	color;
+
+	if (check_element_count(tokens, 4) == FALSE)
+		print_read_error("wrong checkers element count", NULL, vars, tokens);
+	if (check_element_csv(tokens[1], P_COORD, D_FLOAT) == FALSE)
+		print_read_error("wrong element values", tokens[1], vars, tokens);
+	if (check_element_csv(tokens[2], P_NORM, D_FLOAT) == FALSE)
+		print_read_error("wrong element values", tokens[2], vars, tokens);
+	if (check_element_csv(tokens[3], P_RGB, D_INT) == FALSE)
+		print_read_error("wrong element values", tokens[3], vars, tokens);
+	if (set_vars_csv(tokens[1], &point, S_POINT, D_FLOAT) == FALSE)
+		print_read_error("cannot set element values", tokens[1], vars, tokens);
+	if (set_vars_csv(tokens[2], &normal, S_VEC, D_FLOAT) == FALSE)
+		print_read_error("cannot set element values", tokens[2], vars, tokens);
+	if (set_vars_csv(tokens[3], &color, S_COLOR, D_FLOAT) == FALSE)
+		print_read_error("cannot set element values", tokens[3], vars, tokens);
+	chkrs = checkers_(point, normal, vars);
+	if (vars->scene->objects == NULL)
+		vars->scene->objects = object_(CHECKERS, chkrs, color, vars);
+	else
+		append(&vars->scene->objects, object_(CHECKERS, chkrs, color, vars));
 }

@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 14:17:17 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/09 14:28:30 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/09 20:49:05 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ struct s_canvas
 	int		width;
 	int		height;
 	double	aspect_ratio;
+};
+
+struct s_checkers
+{
+	t_vec3		normal;
+	t_point3	point;
 };
 
 struct s_coefficient

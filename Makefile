@@ -6,7 +6,7 @@
 #    By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 16:27:39 by gychoi            #+#    #+#              #
-#    Updated: 2023/06/09 16:22:47 by gychoi           ###   ########.fr        #
+#    Updated: 2023/06/09 20:39:27 by gychoi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,7 @@ BNSSRC = ambient_bonus.c \
 		 canvas_bonus.c \
 		 check_bonus.c \
 		 check_utils_bonus.c \
+		 checkers_bonus.c \
 		 cone_base_bonus.c \
 		 cone_bonus.c \
 		 cone_surfcae_bonus.c \
