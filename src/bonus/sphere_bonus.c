@@ -55,7 +55,7 @@ t_bool	intersect_ray_sphere(t_object *object, t_ray *ray, t_hit *hit)
 	hit->t_max = hit->t;
 	hit->point = ray_at(hit->t, ray);
 	hit->normal = norm(sub(hit->point, sphere->center));
-	if (dot(ray->dir, hit->normal) > 0)
+	if (dot(ray->dir, hit->normal) > 0.0)
 		hit->normal = scl_mul(-1, hit->normal);
 	hit->albedo = object->albedo;
 	return (TRUE);

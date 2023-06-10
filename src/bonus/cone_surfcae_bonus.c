@@ -17,7 +17,7 @@ t_vec3 h_hat)
 {
 	t_coefficient	coef;
 	const t_vec3	w = sub(ray->origin, cone->tip_center);
-	const double	m = cone->radius_sq / mag_sq(cone->h_dir);
+	const double	m = cone->radius_sq / mag_sq(cone->h_vec);
 	const double	v_dot_h = dot(ray->dir, h_hat);
 	const double	w_dot_h = dot(w, h_hat);
 
@@ -59,7 +59,7 @@ t_vec3	interface_normal(const t_cone *cone, t_point3 point)
 	t_vec3			normal;
 	const t_vec3	hp = sub(point, cone->tip_center);
 
-	cos_theta = mag(cone->h_dir) / sqrt(cone->radius_sq + mag_sq(cone->h_dir));
+	cos_theta = mag(cone->h_vec) / sqrt(cone->radius_sq + mag_sq(cone->h_vec));
 	hypotenuse = mag(hp) / cos_theta;
 	normal = sub(point, add(cone->tip_center, \
 	scl_mul(hypotenuse, cone->h_normal)));
@@ -78,7 +78,7 @@ t_bool	intersect_cone_surface(t_object *object, t_ray *ray, t_hit *hit)
 	hit->t_max = hit->t;
 	hit->point = ray_at(hit->t, ray);
 	hit->normal = interface_normal(cone, hit->point);
-	if (dot(ray->dir, hit->normal) > 0)
+	if (dot(ray->dir, hit->normal) > 0.0)
 		hit->normal = scl_mul(-1, hit->normal);
 	hit->albedo = object->albedo;
 	return (TRUE);
