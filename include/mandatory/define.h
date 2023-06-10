@@ -15,7 +15,7 @@
 
 # define RED_CROSS 17
 
-# define SCREEN_HEIGHT 600
+# define SCREEN_HEIGHT 1300
 
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
