@@ -21,15 +21,16 @@ t_cone	*cone_(t_point3 center, t_vec3 normal, t_vec2 dh, t_vars *vars)
 	cone = rt_malloc(sizeof(t_cone), vars);
 	height = dh.y;
 	radius = dh.x;
-	cone->height = height;
-	cone->radius = radius;
-	cone->radius_sq = radius * radius;
-	cone->normal = norm(normal);
-	cone->base_center = center;
-	cone->tip_center = add(cone->base_center, scl_mul(height, cone->normal));
-	cone->h_dir = sub(cone->base_center, cone->tip_center);
-	cone->h_normal = norm(cone->h_dir);
-	return (cone);
+	this->height = height;
+	this->radius = radius;
+	this->radius_sq = radius * radius;
+	this->normal = norm(normal);
+	this->base_center = add(center, \
+	scl_mul(this->height / 2, scl_mul(-1, this->normal)));
+	this->tip_center = add(this->base_center, scl_mul(height, this->normal));
+	this->h_dir = sub(this->base_center, this->tip_center);
+	this->h_normal = norm(this->h_dir);
+	return (this);
 }
 
 t_bool	intersect_ray_cone(t_object *object, t_ray *ray, t_hit *hit)
