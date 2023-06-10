@@ -115,7 +115,7 @@ typedef struct s_cone
 	double		radius;
 	double		radius_sq;
 	t_vec3		normal;
-	t_vec3		h_dir;
+	t_vec3		h_vec;
 	t_vec3		h_normal;
 	t_point3	tip_center;
 	t_point3	base_center;
