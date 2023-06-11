@@ -27,7 +27,7 @@ struct s_camera
 	double		viewport_w;
 	double		viewport_h;
 	t_point3	origin;
-	t_vec3		look_at;
+	t_point3	look_at;
 	t_point3	lower_left_corner;
 	t_vec3		ai;
 	t_vec3		bj;
