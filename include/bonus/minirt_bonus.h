@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 14:17:07 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/09 20:49:49 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/11 19:37:31 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void		rt_mlx_pixel_put(t_mlx_data *img, int x, int y, t_color3 color);
 
 void		set_vars(char **tokens, t_vars *vars);
 t_bool		set_vars_value(char *elem, void *value, int type);
-t_bool		set_vars_csv(char *elem, void *csv, int type_s, int type_d);
+t_bool		set_vars_csv(char *elem, void *csv, int type_s);
 
 t_cone		*set_cone(char **tokens, t_vars *vars);
 t_cylinder	*set_cylinder(char **tokens, t_vars *vars);

@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 20:53:46 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/08 17:25:22 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/11 19:35:32 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ t_cylinder	*set_cylinder(char **tokens, t_vars *vars)
 		print_read_error("wrong element values", tokens[3], vars, tokens);
 	if (check_element_value(tokens[4], P_DIMEN, D_FLOAT) == FALSE)
 		print_read_error("wrong element values", tokens[4], vars, tokens);
-	if (set_vars_csv(tokens[1], &center, S_POINT, D_FLOAT) == FALSE)
+	if (set_vars_csv(tokens[1], &center, S_POINT) == FALSE)
 		print_read_error("cannot set element values", tokens[1], vars, tokens);
-	if (set_vars_csv(tokens[2], &normal, S_VEC, D_FLOAT) == FALSE)
+	if (set_vars_csv(tokens[2], &normal, S_VEC) == FALSE)
 		print_read_error("cannot set element values", tokens[2], vars, tokens);
 	if (set_vars_value(tokens[3], &dh.x, P_RADIUS) == FALSE)
 		print_read_error("cannot set element values", tokens[3], vars, tokens);
@@ -50,7 +50,7 @@ void	set_object_cylinder(char **tokens, t_vars *vars)
 		free(cylinder);
 		print_read_error("wrong element values", tokens[5], vars, tokens);
 	}
-	if (set_vars_csv(tokens[5], &color, S_COLOR, D_FLOAT) == FALSE)
+	if (set_vars_csv(tokens[5], &color, S_COLOR) == FALSE)
 	{
 		free(cylinder);
 		print_read_error("cannot set element values", tokens[5], vars, tokens);
@@ -72,9 +72,9 @@ t_plane	*set_plane(char **tokens, t_vars *vars)
 		print_read_error("wrong element values", tokens[1], vars, tokens);
 	if (check_element_csv(tokens[2], P_NORM, D_FLOAT) == FALSE)
 		print_read_error("wrong element values", tokens[2], vars, tokens);
-	if (set_vars_csv(tokens[1], &point, S_POINT, D_FLOAT) == FALSE)
+	if (set_vars_csv(tokens[1], &point, S_POINT) == FALSE)
 		print_read_error("cannot set element values", tokens[1], vars, tokens);
-	if (set_vars_csv(tokens[2], &normal, S_VEC, D_FLOAT) == FALSE)
+	if (set_vars_csv(tokens[2], &normal, S_VEC) == FALSE)
 		print_read_error("cannot set element values", tokens[2], vars, tokens);
 	return (plane_(point, normal, vars));
 }
@@ -90,7 +90,7 @@ void	set_object_plane(char **tokens, t_vars *vars)
 		free(plane);
 		print_read_error("wrong element values", tokens[3], vars, tokens);
 	}
-	if (set_vars_csv(tokens[3], &color, S_COLOR, D_FLOAT) == FALSE)
+	if (set_vars_csv(tokens[3], &color, S_COLOR) == FALSE)
 	{
 		free(plane);
 		print_read_error("cannot set element values", tokens[3], vars, tokens);

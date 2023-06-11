@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:42:59 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/08 21:14:40 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/11 19:34:14 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	set_ambient(char **tokens, t_vars *vars)
 		print_read_error("wrong element values", tokens[2], vars, tokens);
 	if (set_vars_value(tokens[1], &lighting_ratio, D_FLOAT) == FALSE)
 		print_read_error("cannot set element values", tokens[1], vars, tokens);
-	if (set_vars_csv(tokens[2], &color, S_COLOR, D_FLOAT) == FALSE)
+	if (set_vars_csv(tokens[2], &color, S_COLOR) == FALSE)
 		print_read_error("cannot set element values", tokens[2], vars, tokens);
 	vars->scene->ambient.lighting_ratio = lighting_ratio;
 	vars->scene->ambient.color = scl_mul(lighting_ratio, color);
@@ -49,9 +49,9 @@ void	set_camera(char **tokens, t_vars *vars)
 		print_read_error("wrong element values", tokens[2], vars, tokens);
 	if (check_element_value(tokens[3], P_FOV, D_FLOAT) == FALSE)
 		print_read_error("wrong element values", tokens[3], vars, tokens);
-	if (set_vars_csv(tokens[1], &look_from, S_POINT, D_FLOAT) == FALSE)
+	if (set_vars_csv(tokens[1], &look_from, S_POINT) == FALSE)
 		print_read_error("cannot set element values", tokens[1], vars, tokens);
-	if (set_vars_csv(tokens[2], &orientation, S_VEC, D_FLOAT) == FALSE)
+	if (set_vars_csv(tokens[2], &orientation, S_VEC) == FALSE)
 		print_read_error("cannot set element values", tokens[2], vars, tokens);
 	if (set_vars_value(tokens[3], &h_fov, D_FLOAT) == FALSE)
 		print_read_error("cannot set element values", tokens[3], vars, tokens);
@@ -76,7 +76,7 @@ void	set_light(char **tokens, t_vars *vars)
 		print_read_error("wrong element values", tokens[2], vars, tokens);
 	if (check_element_csv(tokens[3], P_RGB, D_INT) == FALSE)
 		print_read_error("wrong element values", tokens[3], vars, tokens);
-	if (set_vars_csv(tokens[1], &origin, S_POINT, D_FLOAT) == FALSE)
+	if (set_vars_csv(tokens[1], &origin, S_POINT) == FALSE)
 		print_read_error("cannot set element values", tokens[1], vars, tokens);
 	if (set_vars_value(tokens[2], &bright_ratio, D_FLOAT) == FALSE)
 		print_read_error("cannot set element values", tokens[2], vars, tokens);

@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 21:54:31 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/09 20:13:09 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/11 19:58:51 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_sphere	*set_sphere(char **tokens, t_vars *vars)
 		print_read_error("wrong element values", tokens[1], vars, tokens);
 	if (check_element_value(tokens[2], P_DIMEN, D_FLOAT) == FALSE)
 		print_read_error("wrong element values", tokens[2], vars, tokens);
-	if (set_vars_csv(tokens[1], &center, S_POINT, D_FLOAT) == FALSE)
+	if (set_vars_csv(tokens[1], &center, S_POINT) == FALSE)
 		print_read_error("cannot set element values", tokens[1], vars, tokens);
 	if (set_vars_value(tokens[2], &radius, P_RADIUS) == FALSE)
 		print_read_error("cannot set element values", tokens[2], vars, tokens);
@@ -41,7 +41,7 @@ void	set_object_sphere(char **tokens, t_vars *vars)
 		free(sphere);
 		print_read_error("wrong element values", tokens[3], vars, tokens);
 	}
-	if (set_vars_csv(tokens[3], &color, S_COLOR, D_FLOAT) == FALSE)
+	if (set_vars_csv(tokens[3], &color, S_COLOR) == FALSE)
 	{
 		free(sphere);
 		print_read_error("cannot set element values", tokens[3], vars, tokens);
@@ -68,9 +68,9 @@ t_cone	*set_cone(char **tokens, t_vars *vars)
 		print_read_error("wrong element values", tokens[3], vars, tokens);
 	if (check_element_value(tokens[4], P_DIMEN, D_FLOAT) == FALSE)
 		print_read_error("wrong element values", tokens[4], vars, tokens);
-	if (set_vars_csv(tokens[1], &center, S_POINT, D_FLOAT) == FALSE)
+	if (set_vars_csv(tokens[1], &center, S_POINT) == FALSE)
 		print_read_error("cannot set element values", tokens[1], vars, tokens);
-	if (set_vars_csv(tokens[2], &normal, S_VEC, D_FLOAT) == FALSE)
+	if (set_vars_csv(tokens[2], &normal, S_VEC) == FALSE)
 		print_read_error("cannot set element values", tokens[2], vars, tokens);
 	if (set_vars_value(tokens[3], &dh.x, P_RADIUS) == FALSE)
 		print_read_error("cannot set element values", tokens[3], vars, tokens);
@@ -90,7 +90,7 @@ void	set_object_cone(char **tokens, t_vars *vars)
 		free(cone);
 		print_read_error("wrong element values", tokens[5], vars, tokens);
 	}
-	if (set_vars_csv(tokens[5], &color, S_COLOR, D_FLOAT) == FALSE)
+	if (set_vars_csv(tokens[5], &color, S_COLOR) == FALSE)
 	{
 		free(cone);
 		print_read_error("cannot set element values", tokens[5], vars, tokens);

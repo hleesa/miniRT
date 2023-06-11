@@ -6,7 +6,7 @@
 #    By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 16:27:39 by gychoi            #+#    #+#              #
-#    Updated: 2023/06/09 20:39:27 by gychoi           ###   ########.fr        #
+#    Updated: 2023/06/11 20:01:39 by gychoi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -169,11 +169,11 @@ $(MLX): .FORCE
 .PHONY: all clean fclean re bonus
 
 all:
-	$(RM) $(BNOBJD)
+	@$(RM) $(BNOBJD)
 	$(MAKE) $(NAME)
 
 bonus:
-	$(RM) $(MDOBJD)
+	@$(RM) $(MDOBJD)
 	$(MAKE) $(NAME) WITH_BONUS=1
 
 clean:
