@@ -46,9 +46,15 @@ void	set_object_cylinder(char **tokens, t_vars *vars)
 
 	cylinder = set_cylinder(tokens, vars);
 	if (check_element_csv(tokens[5], P_RGB, D_INT) == FALSE)
+	{
+		free(cylinder);
 		print_read_error("wrong element values", tokens[5], vars, tokens);
+	}
 	if (set_vars_csv(tokens[5], &color, S_COLOR, D_FLOAT) == FALSE)
+	{
+		free(cylinder);
 		print_read_error("cannot set element values", tokens[5], vars, tokens);
+	}
 	if (vars->scene->objects == NULL)
 		vars->scene->objects = object_(CYLINDER, cylinder, color, vars);
 	else
@@ -80,9 +86,15 @@ void	set_object_plane(char **tokens, t_vars *vars)
 
 	plane = set_plane(tokens, vars);
 	if (check_element_csv(tokens[3], P_RGB, D_INT) == FALSE)
+	{
+		free(plane);
 		print_read_error("wrong element values", tokens[3], vars, tokens);
+	}
 	if (set_vars_csv(tokens[3], &color, S_COLOR, D_FLOAT) == FALSE)
+	{
+		free(plane);
 		print_read_error("cannot set element values", tokens[3], vars, tokens);
+	}
 	if (vars->scene->objects == NULL)
 		vars->scene->objects = object_(PLANE, plane, color, vars);
 	else

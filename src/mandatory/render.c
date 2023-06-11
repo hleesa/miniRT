@@ -14,9 +14,9 @@
 
 void	render(t_vars *vars)
 {
-	t_scene	*scene;
 	int		i;
 	int		j;
+	t_scene	*scene;
 	t_vec2	pixel_pos;
 
 	scene = vars->scene;

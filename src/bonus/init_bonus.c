@@ -42,7 +42,7 @@ t_vars	*init_vars(void)
 	vars->img.img = NULL;
 	vars->img.addr = NULL;
 	vars->mlx = rt_mlx_init(vars);
-	vars->win = rt_mlx_new_window(vars, width, height, "miniRT_bonus");
+	vars->win = rt_mlx_new_window(vars, width, height, "miniRT");
 	vars->img.img = rt_mlx_new_image(vars, width, height);
 	vars->img.addr = rt_mlx_get_data_addr(vars);
 	return (vars);

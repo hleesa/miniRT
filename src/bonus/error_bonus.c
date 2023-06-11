@@ -15,16 +15,7 @@
 void	check_leaks(void)
 {
 	// 지우는거 잊지 말기
-	system("leaks --list -- miniRT_bonus");
-}
-
-void	print_custom_error(char *msg, void *data)
-{
-	printf("Error\n");
-	printf("%s\n", msg);
-	free_struct(data);
-	atexit(check_leaks);
-	exit(1);
+	system("leaks --list -- miniRT");
 }
 
 void	print_error(char *msg, void *data)

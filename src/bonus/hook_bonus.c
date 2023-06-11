@@ -15,7 +15,7 @@
 static void	check_leaks(void)
 {
 	// 지우는거 잊지 말기
-	system("leaks --list -- miniRT_bonus");
+	system("leaks --list -- miniRT");
 }
 
 int	exit_hook(t_vars *vars)

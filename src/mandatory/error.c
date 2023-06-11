@@ -18,15 +18,6 @@ void	check_leaks(void)
 	system("leaks --list -- miniRT");
 }
 
-void	print_custom_error(char *msg, void *data)
-{
-	printf("Error\n");
-	printf("%s\n", msg);
-	free_struct(data);
-	atexit(check_leaks);
-	exit(1);
-}
-
 void	print_error(char *msg, void *data)
 {
 	printf("Error\n");

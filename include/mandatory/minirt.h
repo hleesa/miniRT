@@ -21,7 +21,7 @@
 
 t_ambient	ambient_(t_color3 color, double lighting_ratio);
 
-t_camera	camera_(t_canvas canvas, t_point3 from, t_vec3 at, double h_fov);
+t_camera	camera_(t_canvas canvas, t_point3 from, t_vec3 orientation, double h_fov);
 
 t_canvas	canvas_(int height);
 
@@ -41,12 +41,11 @@ t_cylinder	*cylinder_(t_point3 center, t_vec3 normal, t_vec2 dh, t_vars *vars);
 
 t_color3	get_diffuse(t_vec3 normal, t_vec3 light_dir, t_color3 color);
 
-void		print_custom_error(char *msg, void *vars);
 void		print_error(char *msg, void *vars);
 void		print_read_error(char *msg, char *loc, void *vars, char **tokens);
 
 void		free_struct(t_vars *vars);
-int			free_tokens(char **tokens);
+void		free_tokens(char **tokens);
 
 t_hit		hit_(double t_max);
 t_bool		hit_objects(t_object *objects, t_ray *ray, t_hit *hit);
