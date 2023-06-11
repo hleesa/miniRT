@@ -37,9 +37,15 @@ void	set_object_sphere(char **tokens, t_vars *vars)
 
 	sphere = set_sphere(tokens, vars);
 	if (check_element_csv(tokens[3], P_RGB, D_INT) == FALSE)
+	{
+		free(sphere);
 		print_read_error("wrong element values", tokens[3], vars, tokens);
+	}
 	if (set_vars_csv(tokens[3], &color, S_COLOR, D_FLOAT) == FALSE)
+	{
+		free(sphere);
 		print_read_error("cannot set element values", tokens[3], vars, tokens);
+	}
 	if (vars->scene->objects == NULL)
 		vars->scene->objects = object_(SPHERE, sphere, color, vars);
 	else

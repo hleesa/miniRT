@@ -56,7 +56,7 @@ void	set_camera(char **tokens, t_vars *vars)
 	if (set_vars_value(tokens[3], &h_fov, D_FLOAT) == FALSE)
 		print_read_error("cannot set element values", tokens[3], vars, tokens);
 	vars->scene->camera = \
-	camera_(vars->scene->canvas, look_from, orientation, h_fov);
+		camera_(vars->scene->canvas, look_from, orientation, h_fov);
 }
 
 void	set_light(char **tokens, t_vars *vars)
