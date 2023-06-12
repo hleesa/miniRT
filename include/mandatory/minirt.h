@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 20:10:26 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/11 19:36:01 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/12 15:02:23 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,15 @@ t_color3	trace_ray(t_scene *scene);
 
 void		read_file(t_vars *vars, char *file);
 
-double		rt_atof(const char *str, int *error);
-int			rt_atoi(const char *str, int *error, int *sign);
+double		rt_atof(const char *str, t_bool *is_error);
+int			rt_atoi(const char *str, t_bool *is_error, int *sign);
 void		rt_close(int fd, t_vars *vars);
 int			rt_open(char *file, int flag, t_vars *vars);
 void		*rt_malloc(size_t size, t_vars *vars);
 
-long long	toll(const char *str, int sign, size_t idx, int *error);
-long long	tollp(const char *str, size_t idx, int *precision, int *error);
+long long	toll(const char *str, int sign, size_t idx, t_bool *is_error);
+long long	tollp(const char *str, size_t idx, \
+			int *precision, t_bool *is_error);
 
 char		*rt_mlx_get_data_addr(t_vars *vars);
 void		*rt_mlx_init(t_vars *vars);

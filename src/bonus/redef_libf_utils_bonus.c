@@ -6,13 +6,13 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 21:54:05 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/08 21:54:06 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/12 15:03:56 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt_bonus.h"
 
-int	rt_atoi(const char *str, int *error, int *sign)
+int	rt_atoi(const char *str, t_bool *is_error, int *sign)
 {
 	size_t		idx;
 	long long	ret;
@@ -24,13 +24,13 @@ int	rt_atoi(const char *str, int *error, int *sign)
 			*sign = -1;
 		++idx;
 	}
-	ret = toll(str, *sign, idx, error);
+	ret = toll(str, *sign, idx, is_error);
 	if (str[idx] == 0 || ret > INT_MAX || ret < INT_MIN)
-		*error = TRUE;
+		*is_error = TRUE;
 	return ((int)ret);
 }
 
-long long	toll(const char *str, int sign, size_t idx, int *error)
+long long	toll(const char *str, int sign, size_t idx, t_bool *is_error)
 {
 	long long	acc;
 	long long	llmax;
@@ -41,8 +41,8 @@ long long	toll(const char *str, int sign, size_t idx, int *error)
 	{
 		if (ft_isdigit(str[idx]) == FALSE)
 		{
-			*error = TRUE;
-			return (*error);
+			*is_error = TRUE;
+			return (*is_error);
 		}
 		if ((acc > llmax / 10) \
 			|| ((acc == llmax / 10 && (str[idx] - '0') > (llmax % 10))) \
@@ -59,7 +59,8 @@ long long	toll(const char *str, int sign, size_t idx, int *error)
 	return (sign * acc);
 }
 
-long long	tollp(const char *str, size_t idx, int *precision, int *error)
+long long	tollp(const char *str, size_t idx, \
+					int *precision, t_bool *is_error)
 {
 	long long		acc;
 	long long		llmax;
@@ -72,8 +73,8 @@ long long	tollp(const char *str, size_t idx, int *precision, int *error)
 		if (acc > llmax / 10 || (acc == llmax / 10 && str[idx] - '0' \
 		> (llmax % 10)) || !ft_isdigit(str[idx]) || *precision >= 15)
 		{
-			*error = TRUE;
-			return (*error);
+			*is_error = TRUE;
+			return (*is_error);
 		}
 		acc = acc * 10 + str[idx] - '0';
 		++*precision;

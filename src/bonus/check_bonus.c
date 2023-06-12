@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 21:52:19 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/08 22:06:50 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/12 14:46:13 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 t_bool	check_element_attr(char *elem, int type_p)
 {
-	t_bool			error;
-	const double	ed = rt_atof(elem, &error);
+	t_bool			is_error;
+	const double	ed = rt_atof(elem, &is_error);
 	const int		ei = ft_atoi(elem);
 
-	error = FALSE;
+	is_error = FALSE;
 	if (type_p == P_COORD || type_p == P_DIMEN)
-		if (INT_MAX < ed || ed < INT_MIN || error == TRUE)
+		if (INT_MAX < ed || ed < INT_MIN || is_error == TRUE)
 			return (FALSE);
 	if (type_p == P_FOV)
-		if (180 < ed || ed < 0 || error == TRUE)
+		if (180 < ed || ed < 0 || is_error == TRUE)
 			return (FALSE);
 	if (type_p == P_LIGHT)
-		if (1.0 < ed || ed < 0.0 || error == TRUE)
+		if (1.0 < ed || ed < 0.0 || is_error == TRUE)
 			return (FALSE);
 	if (type_p == P_NORM)
-		if (1.0 < ed || ed < -1.0 || error == TRUE)
+		if (1.0 < ed || ed < -1.0 || is_error == TRUE)
 			return (FALSE);
 	if (type_p == P_RGB)
 		if (255 < ei || ei < 0)
