@@ -82,9 +82,9 @@ void	set_light(char **tokens, t_vars *vars)
 		print_read_error("cannot set element values", tokens[3], vars, tokens);
 	light = light_(origin, color, bright_ratio, vars);
 	if (vars->scene->light == NULL)
-		vars->scene->light = object_(LIGHT_POINT, light, color, vars);
+		vars->scene->light = object_(POINT_LIGHT, light, color, vars);
 	else
-		append(&vars->scene->light, object_(LIGHT_POINT, light, color, vars));
+		append(&vars->scene->light, object_(POINT_LIGHT, light, color, vars));
 }
 
 void	set_vars(char **tokens, t_vars *vars)

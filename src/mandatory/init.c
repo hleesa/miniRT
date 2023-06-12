@@ -22,7 +22,7 @@ static t_scene	*_init_scene(t_vars *vars)
 		camera_(scene->canvas, \
 		point3_(0, 0, 0), vec3_(0, 0, 1), INITIAL_VALUE);
 	scene->ambient = ambient_(color3_(0, 0, 0), INITIAL_VALUE);
-	scene->light = object_(LIGHT_POINT, \
+	scene->light = object_(POINT_LIGHT, \
 		light_(point3_(0, 0, 0), color3_(1, 1, 1), INITIAL_VALUE, vars), \
 		color3_(1, 1, 1), vars);
 	scene->objects = NULL;

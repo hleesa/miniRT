@@ -27,10 +27,9 @@ t_bool	in_shadow(t_scene *scene, t_vec3 light_dir)
 	return (FALSE);
 }
 
-t_color3	point_light_get(t_scene *scene, t_light *light)
+t_color3	point_light_color(t_scene *scene, t_light *light)
 {
 	const double	brightness = light->bright_ratio * LUMEN;
-	const t_color3	ambient = scene->ambient.color;
 	t_vec3			light_dir;
 	t_color3		diffuse;
 	t_color3		specular;
@@ -41,7 +40,7 @@ t_color3	point_light_get(t_scene *scene, t_light *light)
 	light_dir = norm(light_dir);
 	diffuse = get_diffuse(scene->hit.normal, light_dir, light->color);
 	specular = get_specular(scene, light_dir, light->color);
-	return (scl_mul(brightness, add(add(ambient, diffuse), specular)));
+	return (scl_mul(brightness, add(diffuse, specular)));
 }
 
 t_color3	phong_lighting(t_scene *scene)
@@ -53,10 +52,10 @@ t_color3	phong_lighting(t_scene *scene)
 	lights = scene->light;
 	while (lights)
 	{
-		if (lights->type == LIGHT_POINT)
+		if (lights->type == POINT_LIGHT)
 		{
 			light_color = add(light_color, \
-			point_light_get(scene, lights->element));
+			point_light_color(scene, lights->element));
 		}
 		lights = lights->next;
 	}

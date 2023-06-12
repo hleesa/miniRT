@@ -14,12 +14,13 @@
 
 t_hit	hit_(double t_max)
 {
-	t_hit	this;
+	t_hit	hit;
 
-	this.t_min = EPSILON;
-	this.t_max = t_max;
-	return (this);
+	hit.t_min = EPSILON;
+	hit.t_max = t_max;
+	return (hit);
 }
+
 
 void	init_intersect_object(t_bool (*intersect_object[OBJECT_TYPE_SIZE])())
 {

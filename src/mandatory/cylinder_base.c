@@ -15,14 +15,12 @@
 static double	ray_disk_intersection(const t_cylinder *cylinder, t_ray *ray, \
 t_hit *hit, t_point3 center)
 {
-	double	root;
-	double	numerator;
-	double	denominator;
+	const double	numerator = dot(sub(center, ray->origin), cylinder->normal);
+	const double	denominator = dot(ray->dir, cylinder->normal);
+	double			root;
 
-	denominator = dot(ray->dir, cylinder->normal);
 	if (fabs(denominator) < EPSILON)
 		return (INVALID_ROOT);
-	numerator = dot(sub(center, ray->origin), cylinder->normal);
 	root = numerator / denominator;
 	if (root < hit->t_min || hit->t_max < root)
 		return (INVALID_ROOT);

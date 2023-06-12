@@ -62,8 +62,7 @@ t_bool	intersect_cylinder_surface(t_object *object, t_ray *ray, t_hit *hit)
 	hit->t_max = hit->t;
 	hit->point = ray_at(hit->t, ray);
 	cp = sub(hit->point, cylinder->base_center);
-	hit->normal = norm(sub(cp, scl_mul(dot(cp, cylinder->normal), \
-	cylinder->normal)));
+	hit->normal = norm(sub(cp, scl_mul(dot(cp, cylinder->normal), cylinder->normal)));
 	if (dot(ray->dir, hit->normal) > 0.0)
 		hit->normal = scl_mul(-1, hit->normal);
 	hit->albedo = object->albedo;

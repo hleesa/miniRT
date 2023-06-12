@@ -26,7 +26,7 @@
 # define INITIAL_VALUE -42
 
 # define ESC 53
-# define LIGHT_POINT 42
+# define POINT_LIGHT 42
 # define INVALID_ROOT -1
 
 #endif
