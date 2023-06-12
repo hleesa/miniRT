@@ -29,7 +29,7 @@ static double	_get_width(double h_fov)
 	return (width);
 }
 
-t_camera	camera_(t_canvas canvas, t_point3 from, t_vec3 orientation, double h_fov)
+t_camera	camera_(t_canvas canvas, t_point3 from, t_vec3 dir, double h_fov)
 {
 	t_camera	camera;
 	t_vec3		jup;
@@ -41,7 +41,7 @@ t_camera	camera_(t_canvas canvas, t_point3 from, t_vec3 orientation, double h_fo
 	camera.viewport_w = 2.0 * _get_width(camera.h_fov);
 	camera.viewport_h = camera.viewport_w / canvas.aspect_ratio;
 	camera.origin = from;
-	camera.look_at = add(from, orientation);
+	camera.look_at = add(from, dir);
 	jup = vec3_(0, 1, 0);
 	k = norm(sub(camera.origin, camera.look_at));
 	i = norm(cross(jup, k));

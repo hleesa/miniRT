@@ -35,8 +35,8 @@ t_ray	primary_ray(t_camera *cam, t_vec2 pixel_pos)
 	const t_vec3	ai = scl_mul(pixel_pos.x, cam->ai);
 	const t_vec3	bj = scl_mul(pixel_pos.y, cam->bj);
 
-	this.origin = cam->origin;
-	this.dir = norm(sub(add(add(cam->lower_left_corner, ai), bj), cam->origin));
+	this.origin = add(add(cam->lower_left_corner, ai), bj);
+	this.dir = norm(sub(this.origin, cam->origin));
 	return (this);
 }
 

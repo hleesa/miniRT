@@ -21,7 +21,7 @@
 
 t_ambient	ambient_(t_color3 color, double lighting_ratio);
 
-t_camera	camera_(t_canvas canvas, t_point3 from, t_vec3 orientation, double h_fov);
+t_camera	camera_(t_canvas canvas, t_point3 from, t_vec3 dir, double h_fov);
 
 t_canvas	canvas_(int height);
 

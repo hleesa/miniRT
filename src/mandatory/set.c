@@ -36,7 +36,7 @@ void	set_ambient(char **tokens, t_vars *vars)
 void	set_camera(char **tokens, t_vars *vars)
 {
 	t_point3	look_from;
-	t_vec3		orientation;
+	t_vec3		dir;
 	double		h_fov;
 
 	if (vars->scene->camera.h_fov != INITIAL_VALUE)
@@ -51,12 +51,12 @@ void	set_camera(char **tokens, t_vars *vars)
 		print_read_error("wrong element values", tokens[3], vars, tokens);
 	if (set_vars_csv(tokens[1], &look_from, S_POINT) == FALSE)
 		print_read_error("cannot set element values", tokens[1], vars, tokens);
-	if (set_vars_csv(tokens[2], &orientation, S_VEC) == FALSE)
+	if (set_vars_csv(tokens[2], &dir, S_VEC) == FALSE)
 		print_read_error("cannot set element values", tokens[2], vars, tokens);
 	if (set_vars_value(tokens[3], &h_fov, D_FLOAT) == FALSE)
 		print_read_error("cannot set element values", tokens[3], vars, tokens);
 	vars->scene->camera = \
-		camera_(vars->scene->canvas, look_from, orientation, h_fov);
+		camera_(vars->scene->canvas, look_from, dir, h_fov);
 }
 
 void	set_light(char **tokens, t_vars *vars)
