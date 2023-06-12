@@ -26,6 +26,6 @@
 
 # define INITIAL_VALUE -42
 # define INVALID_ROOT -1
-# define LIGHT_POINT 42
+# define POINT_LIGHT 42
 
 #endif

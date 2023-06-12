@@ -21,7 +21,7 @@ t_ray	ray_(t_point3 origin, t_vec3 dir)
 	return (this);
 }
 
-t_vec3	ray_at(double t, t_ray *ray)
+t_point3	ray_at(double t, t_ray *ray)
 {
 	t_vec3	this;
 
@@ -29,14 +29,14 @@ t_vec3	ray_at(double t, t_ray *ray)
 	return (this);
 }
 
-t_ray	primary_ray(t_camera *cam, t_vec2 pixel_pos)
+t_ray	primary_ray(t_camera *camera, t_vec2 pixel_pos)
 {
 	t_ray			this;
-	const t_vec3	ai = scl_mul(pixel_pos.x, cam->ai);
-	const t_vec3	bj = scl_mul(pixel_pos.y, cam->bj);
+	const t_vec3	ai = scl_mul(pixel_pos.x, camera->ai);
+	const t_vec3	bj = scl_mul(pixel_pos.y, camera->bj);
 
-	this.origin = add(add(cam->lower_left_corner, ai), bj);
-	this.dir = norm(sub(this.origin, cam->origin));
+	this.origin = add(add(camera->lower_left_corner, ai), bj);
+	this.dir = norm(sub(this.origin, camera->origin));
 	return (this);
 }
 
