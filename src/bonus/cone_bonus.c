@@ -24,7 +24,7 @@ t_cone	*cone_(t_point3 center, t_vec3 normal, t_vec2 dh, t_vars *vars)
 	cone->height = height;
 	cone->radius = radius;
 	cone->radius_sq = radius * radius;
-	cone->normal = norm(normal);
+	cone->normal = normal;
 	cone->base_center = add(center, \
 	scl_mul(cone->height / 2, scl_mul(-1, cone->normal)));
 	cone->tip_center = add(cone->base_center, scl_mul(height, cone->normal));

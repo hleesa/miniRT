@@ -14,30 +14,30 @@
 
 t_ray	ray_(t_point3 origin, t_vec3 dir)
 {
-	t_ray	this;
+	t_ray	ray;
 
-	this.origin = origin;
-	this.dir = norm(dir);
-	return (this);
+	ray.origin = origin;
+	ray.dir = norm(dir);
+	return (ray);
 }
 
 t_point3	ray_at(double t, t_ray *ray)
 {
-	t_vec3	this;
+	t_point3	point;
 
-	this = add(ray->origin, scl_mul(t, ray->dir));
-	return (this);
+	point = add(ray->origin, scl_mul(t, ray->dir));
+	return (point);
 }
 
 t_ray	primary_ray(t_camera *camera, t_vec2 pixel_pos)
 {
-	t_ray			this;
+	t_ray			ray;
 	const t_vec3	ai = scl_mul(pixel_pos.x, camera->ai);
 	const t_vec3	bj = scl_mul(pixel_pos.y, camera->bj);
 
-	this.origin = add(add(camera->lower_left_corner, ai), bj);
-	this.dir = norm(sub(this.origin, camera->origin));
-	return (this);
+	ray.origin = add(add(camera->lower_left_corner, ai), bj);
+	ray.dir = norm(sub(ray.origin, camera->origin));
+	return (ray);
 }
 
 t_color3	trace_ray(t_scene *scene)
