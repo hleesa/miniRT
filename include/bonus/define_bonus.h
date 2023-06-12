@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 14:16:21 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/09 17:01:06 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/12 21:59:42 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@
 # define EPSILON 1e-6
 # define LUMEN 3
 
+# define CHECKERS_SIZE 0.42
 # define INITIAL_VALUE -42
 # define INVALID_ROOT -1
 # define POINT_LIGHT 42
+# define REFLECTION 1.0
+# define SHININESS 32
 
 #endif

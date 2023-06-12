@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 20:36:44 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/10 14:29:58 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/12 21:59:36 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ t_bool	intersect_ray_checkers(t_object *object, t_ray *ray, t_hit *hit)
 	if (dot(ray->dir, hit->normal) > 0)
 		hit->normal = scl_mul(-1, hit->normal);
 	hit->albedo = object->albedo;
-	if ((int)floorf(0.42 * hit->point.x) + \
-		(int)floorf(0.42 * hit->point.z) & 1)
+	if ((int)floorf(CHECKERS_SIZE * hit->point.x) + \
+		(int)floorf(CHECKERS_SIZE * hit->point.z) & 1)
 		hit->albedo = color3_(0, 0, 0);
 	return (TRUE);
 }
