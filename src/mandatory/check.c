@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 21:17:18 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/12 14:59:18 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/13 15:34:35 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_bool	check_element_attr(char *elem, int type_p)
 			return (FALSE);
 		else if ((type_p == P_COORD || type_p == P_DIMEN) && \
 		(INT_MAX < ed || ed < INT_MIN))
-				return (FALSE);
+			return (FALSE);
 		else if (type_p == P_FOV && (180 < ed || ed < 0))
 			return (FALSE);
 		else if (type_p == P_LIGHT && (1.0 < ed || ed < 0.0))

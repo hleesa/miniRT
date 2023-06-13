@@ -6,7 +6,7 @@
 /*   By: salee2 <salee2@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 20:21:56 by salee2            #+#    #+#             */
-/*   Updated: 2023/05/24 20:21:57 by salee2           ###   ########.fr       */
+/*   Updated: 2023/06/13 15:36:16 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ t_bool	intersect_cylinder_surface(t_object *object, t_ray *ray, t_hit *hit)
 	hit->t_max = hit->t;
 	hit->point = ray_at(hit->t, ray);
 	cp = sub(hit->point, cylinder->base_center);
-	hit->normal = norm(sub(cp, scl_mul(dot(cp, cylinder->normal), cylinder->normal)));
+	hit->normal = norm(sub(cp, scl_mul(dot(cp, cylinder->normal), \
+	cylinder->normal)));
 	if (dot(ray->dir, hit->normal) > 0.0)
 		hit->normal = scl_mul(-1, hit->normal);
 	hit->albedo = object->albedo;

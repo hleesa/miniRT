@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 21:53:12 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/09 20:48:28 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/13 15:38:18 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_hit	hit_(double t_max)
 	hit.t_max = t_max;
 	return (hit);
 }
-
 
 void	init_intersect_object(t_bool (*intersect_object[OBJECT_TYPE_SIZE])())
 {
