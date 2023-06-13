@@ -6,7 +6,7 @@
 /*   By: gychoi <gychoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 21:53:21 by gychoi            #+#    #+#             */
-/*   Updated: 2023/06/09 16:53:11 by gychoi           ###   ########.fr       */
+/*   Updated: 2023/06/13 14:16:41 by gychoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static t_scene	*_init_scene(t_vars *vars)
 	scene->canvas = canvas_(SCREEN_HEIGHT);
 	scene->camera = \
 		camera_(scene->canvas, \
-		point3_(0, 0, 0), vec3_(0, 0, 1), INITIAL_VALUE);
+		point3_(0, 0, 0), vec3_(0, 0, 0), INITIAL_VALUE);
 	scene->ambient = ambient_(color3_(0, 0, 0), INITIAL_VALUE);
 	scene->light = NULL;
 	scene->objects = NULL;
