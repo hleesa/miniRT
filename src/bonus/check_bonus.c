@@ -14,26 +14,29 @@
 
 t_bool	check_element_attr(char *elem, int type_p)
 {
-	t_bool			is_error;
-	const double	ed = rt_atof(elem, &is_error);
-	const int		ei = ft_atoi(elem);
+	double	ed;
+	t_bool	is_error;
 
-	is_error = FALSE;
-	if (type_p == P_COORD || type_p == P_DIMEN)
-		if (INT_MAX < ed || ed < INT_MIN || is_error == TRUE)
-			return (FALSE);
-	if (type_p == P_FOV)
-		if (180 < ed || ed < 0 || is_error == TRUE)
-			return (FALSE);
-	if (type_p == P_LIGHT)
-		if (1.0 < ed || ed < 0.0 || is_error == TRUE)
-			return (FALSE);
-	if (type_p == P_NORM)
-		if (1.0 < ed || ed < -1.0 || is_error == TRUE)
-			return (FALSE);
 	if (type_p == P_RGB)
-		if (255 < ei || ei < 0)
+	{
+		if (255 < ft_atoi(elem) || ft_atoi(elem) < 0)
 			return (FALSE);
+	}
+	else
+	{
+		ed = rt_atof(elem, &is_error);
+		if (is_error)
+			return (FALSE);
+		else if ((type_p == P_COORD || type_p == P_DIMEN) && \
+		(INT_MAX < ed || ed < INT_MIN))
+			return (FALSE);
+		else if (type_p == P_FOV && (180 < ed || ed < 0))
+			return (FALSE);
+		else if (type_p == P_LIGHT && (1.0 < ed || ed < 0.0))
+			return (FALSE);
+		else if (type_p == P_NORM && (1.0 < ed || ed < -1.0))
+			return (FALSE);
+	}
 	return (TRUE);
 }
 
