@@ -43,6 +43,10 @@ t_camera	camera_(t_canvas canvas, t_point3 from, t_vec3 dir, double h_fov)
 	camera.origin = from;
 	camera.look_at = add(from, dir);
 	jup = vec3_(0, 1, 0);
+	if (dot(dir, jup) == 1)
+		jup = vec3_(0, 0, 1);
+	else if (dot(dir, jup) == -1)
+		jup = vec3_(0, 0, -1);
 	k = norm(sub(camera.origin, camera.look_at));
 	i = norm(cross(jup, k));
 	j = cross(k, i);
